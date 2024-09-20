@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import {
   AppBar,
   Stack,
@@ -7,7 +8,6 @@ import {
   Button,
   Container,
 } from "@mui/material";
-import { useEffect, useState } from "react";
 
 function Nouns() {
   const [passedInLastTen, setPassedInLastTen] = useState(Array(10).fill(false));
@@ -136,7 +136,7 @@ function Nouns() {
           padding: "10px",
         }}
       >
-        <Typography variant="h3">{successCounter} / 10</Typography>
+        <Typography variant="h4">{successCounter} / 10</Typography>
       </Box>
       <Box
         id="word"
@@ -147,7 +147,7 @@ function Nouns() {
           marginBottom: "20px",
         }}
       >
-        <Typography variant="h3">{actualWord}</Typography>
+        <Typography variant="h4">{actualWord}</Typography>
       </Box>
 
       {/* translation table  */}

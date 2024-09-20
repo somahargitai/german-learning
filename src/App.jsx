@@ -33,12 +33,12 @@ const menuOptions = [
     href: "/verbs",
     icon: Handshake,
   },
-  {
-    key: "phrases",
-    label: "Phrases",
-    href: "/phrases",
-    icon: Handshake,
-  },
+  // {
+  //   key: "phrases",
+  //   label: "Phrases",
+  //   href: "/phrases",
+  //   icon: Handshake,
+  // },
 ];
 
 function App() {

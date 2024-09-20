@@ -1,6 +1,7 @@
-import HamburgerItem from "./HamburgerItem.jsx";
 import PropTypes from "prop-types";
 import { List, Typography } from "@mui/material";
+
+import HamburgerItem from "./HamburgerItem.jsx";
 
 const Menu = ({ options }) => {
   return (
@@ -12,7 +13,6 @@ const Menu = ({ options }) => {
     >
       {options.map((option) => (
         <HamburgerItem key={option.id} onClick={option.onClick}>
-          {option.icon}
           <Typography>{option.label}</Typography>
         </HamburgerItem>
       ))}
