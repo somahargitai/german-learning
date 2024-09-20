@@ -41,16 +41,12 @@ function Nouns() {
   };
 
   function setNextPassed() {
-    solutions.forEach((solution) => console.log(solution));
     if (solutions[0].visible === false) {
       setSolutionsItemVisible(0);
-      solutions.forEach((solution) => console.log(solution));
     } else if (solutions[1].visible === false) {
       setSolutionsItemVisible(1);
-      solutions.forEach((solution) => console.log(solution));
     } else if (solutions[2].visible === false) {
       setSolutionsItemVisible(2);
-      solutions.forEach((solution) => console.log(solution));
       setShowButtonDisabled(true);
     }
   }
@@ -64,38 +60,25 @@ function Nouns() {
 
   useEffect(() => {
     const language = getRandomLanguage();
-    setActualLanguage(language);
     const nextWordIndex = getNextWordIndex();
-    const nextWord = words[nextWordIndex][actualLanguage];
+    const nextItem = words[nextWordIndex];
+    const nextWord = nextItem[language];
+
+    setActualLanguage(language);
     setActualIndex(nextWordIndex);
     setActualWord(nextWord);
 
-    console.log(`word: ${nextWord}, i: ${nextWordIndex}, lang: ${language}`);
-
-    const wordItemFound = words.filter(
-      (word) => nextWord === word[actualLanguage]
-    );
-    console.log(wordItemFound);
-
-    const translationSolution =
-      language === "de" ? wordItemFound[0].hu : wordItemFound[0].de;
-    const pluralSolution = wordItemFound[0].de_pl;
-    const pronounSolution = wordItemFound[0].pronoun;
-    const solutionsFound = [
+    const translationSolution = language === "de" ? nextItem.hu : nextItem.de;
+    const pluralSolution = nextItem.de_pl;
+    const pronounSolution = nextItem.pronoun;
+    const solutionsRefill = [
       { solution: translationSolution, visible: false },
       { solution: pronounSolution, visible: false },
       { solution: pluralSolution, visible: false },
     ];
-    console.log("solutionFound");
-    console.log(solutionsFound);
 
-    setSolutions(solutionsFound);
+    setSolutions(solutionsRefill);
   }, []);
-
-  useEffect(() => {
-    console.log("solutions");
-    console.log(solutions);
-  });
 
   return (
     <Container
