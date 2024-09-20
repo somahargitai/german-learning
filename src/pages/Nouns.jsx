@@ -6,7 +6,6 @@ import {
   Typography,
   Button,
   Container,
-  TableContainer,
 } from "@mui/material";
 import { useEffect, useState } from "react";
 
@@ -51,6 +50,13 @@ function Nouns() {
     }
   }
 
+  function setNewInLastTen(newPassed) {
+    // remove the first element, then add the new one
+    const newList = [...passedInLastTen.slice(1), newPassed];
+    console.log(newList);
+    setPassedInLastTen(newList);
+  }
+
   function getRandomLanguage() {
     const languages = ["de", "hu"];
     const randomIndex = Math.floor(Math.random() * languages.length);
@@ -58,7 +64,7 @@ function Nouns() {
     return chosenLanguage;
   }
 
-  useEffect(() => {
+  function setNextWord() {
     const language = getRandomLanguage();
     const nextWordIndex = getNextWordIndex();
     const nextItem = words[nextWordIndex];
@@ -78,7 +84,16 @@ function Nouns() {
     ];
 
     setSolutions(solutionsRefill);
+    setShowButtonDisabled(false);
+  }
+
+  useEffect(() => {
+    setNextWord();
   }, []);
+
+  useEffect(() => {
+    setSuccessCounter(passedInLastTen.filter((passed) => passed).length);
+  }, [passedInLastTen]);
 
   return (
     <Container
@@ -214,10 +229,38 @@ function Nouns() {
           justifyContent="space-between"
           sx={{ mx: 2 }}
         >
-          <Button endIcon="❌" variant="contained" sx={{ flexGrow: 1 }}>
+          <Button
+            onClick={() => {
+              setNewInLastTen(false);
+              // setPassedInLastTen(
+              //   passedInLastTen.map((passed, index) =>
+              //     index === successCounter ? true : passed
+              //   )
+              // );
+              setNextWord();
+            }}
+            endIcon="❌"
+            variant="contained"
+            sx={{ flexGrow: 1 }}
+          >
             Failed
           </Button>
-          <Button endIcon="✅" variant="contained" sx={{ flexGrow: 1 }}>
+          <Button
+            onClick={() => {
+              // setSuccessCounter(successCounter + 1);
+              setNewInLastTen(true);
+
+              // setPassedInLastTen(
+              //   passedInLastTen.map((passed, index) =>
+              //     index === successCounter ? true : passed
+              //   )
+              // );
+              setNextWord();
+            }}
+            endIcon="✅"
+            variant="contained"
+            sx={{ flexGrow: 1 }}
+          >
             Passed
           </Button>
         </Stack>
