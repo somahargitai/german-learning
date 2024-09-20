@@ -26,7 +26,7 @@ Menu.propTypes = {
       id: PropTypes.number.isRequired,
       label: PropTypes.string.isRequired,
       onClick: PropTypes.func.isRequired,
-    })
+    }),
   ),
 };
 

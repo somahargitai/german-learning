@@ -49,7 +49,7 @@ Menu.propTypes = {
       label: PropTypes.string.isRequired,
       href: PropTypes.string.isRequired,
       icon: PropTypes.elementType.isRequired,
-    })
+    }),
   ),
 };
 

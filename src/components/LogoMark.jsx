@@ -21,14 +21,7 @@ export function LogoMark({ sx }) {
 }
 
 export function LogoMarkFlex({ style }) {
-  return (
-    <img
-      src={viteLogo}
-      className="logo"
-      alt="Vite logo"
-      style={style}
-    />
-  );
+  return <img src={viteLogo} className="logo" alt="Vite logo" style={style} />;
 }
 
 LogoMark.propTypes = {

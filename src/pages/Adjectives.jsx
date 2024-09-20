@@ -34,8 +34,8 @@ function Adjectives() {
   const setSolutionsItemVisible = (index) => {
     setSolutions(
       solutions.map((solution, si) =>
-        si === index ? { ...solution, visible: true } : solution
-      )
+        si === index ? { ...solution, visible: true } : solution,
+      ),
     );
   };
 
@@ -112,7 +112,7 @@ function Adjectives() {
             // "primary.main", "primary.light",
             backgroundColor: "primary.dark",
             color: "white",
-            justifyContent: "center",
+            justifyContent: "space-between",
           }}
         >
           <Typography
@@ -124,30 +124,21 @@ function Adjectives() {
           >
             Adjectives
           </Typography>
+          <Typography variant="h4">{successCounter} / 10</Typography>
         </Toolbar>
       </AppBar>
 
       {/* main content */}
-      <Box
-        id="success-counter"
-        sx={{
-          border: "3px solid black",
-          borderRadius: "20px",
-          padding: "10px",
-        }}
-      >
-        <Typography variant="h4">{successCounter} / 10</Typography>
-      </Box>
+
       <Box
         id="word"
         sx={{
-          marginTop: "40px",
+          marginTop: "10px",
           borderBottom: "3px solid black",
           paddingBottom: "10px",
-          marginBottom: "20px",
         }}
       >
-        <Typography variant="h4">{actualWord}</Typography>
+        <Typography variant="h2">{actualWord}</Typography>
       </Box>
 
       {/* translation table  */}
@@ -157,7 +148,7 @@ function Adjectives() {
         justifyContent="center"
         width="100%"
         paddingX={2}
-        paddingTop={5}
+        paddingTop={3}
       >
         {/* label column */}
         <Stack
