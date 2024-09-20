@@ -8,9 +8,9 @@ export default defineConfig({
     VitePWA({
       registerType: "autoUpdate", // Ensures auto-updates for the PWA
       manifest: {
-        name: "My React Vite PWA",
-        short_name: "ReactPWA",
-        description: "My React Vite Progressive Web App",
+        name: "Soma Deutsch - German Learning App",
+        short_name: "Soma Deutsch",
+        description: "My awesome German learning app",
         theme_color: "#ffffff",
         background_color: "#ffffff",
         display: "standalone",
