@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 
 function Verbs() {
+  const [lastFailsIndexes, setLastFailsIndexes] = useState([]);
   const [passedInLastTen, setPassedInLastTen] = useState(Array(10).fill(false));
   const [successCounter, setSuccessCounter] = useState(0);
   const [actualIndex, setActualIndex] = useState(0);
@@ -26,7 +27,19 @@ function Verbs() {
   ]);
   const [showButtonDisabled, setShowButtonDisabled] = useState(false);
 
+  function addLastFailsIndexes(index) {
+    const newIndexes = [...lastFailsIndexes, index];
+    setLastFailsIndexes(newIndexes);
+  }
+
   function getNextWordIndex() {
+    if (successCounter < 5 && lastFailsIndexes.length > 5) {
+      const randomElementFromLastFails =
+        lastFailsIndexes[Math.floor(Math.random() * lastFailsIndexes.length)];
+
+      return randomElementFromLastFails;
+    }
+
     let randomIndex;
     do {
       randomIndex = Math.floor(Math.random() * words.length);
@@ -261,6 +274,7 @@ function Verbs() {
             disabled={!showButtonDisabled}
             onClick={() => {
               setNewInLastTen(false);
+              addLastFailsIndexes(actualIndex);
               setNextWord();
             }}
             endIcon="❌"

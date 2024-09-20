@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 
 function Nouns() {
+  const [lastFailsIndexes, setLastFailsIndexes] = useState([]);
   const [passedInLastTen, setPassedInLastTen] = useState(Array(10).fill(false));
   const [successCounter, setSuccessCounter] = useState(0);
   const [actualIndex, setActualIndex] = useState(0);
@@ -22,7 +23,19 @@ function Nouns() {
   ]);
   const [showButtonDisabled, setShowButtonDisabled] = useState(false);
 
+  function addLastFailsIndexes(index) {
+    const newIndexes = [...lastFailsIndexes, index];
+    setLastFailsIndexes(newIndexes);
+  }
+
   function getNextWordIndex() {
+    if (successCounter < 5 && lastFailsIndexes.length > 5) {
+      const randomElementFromLastFails =
+        lastFailsIndexes[Math.floor(Math.random() * lastFailsIndexes.length)];
+
+      return randomElementFromLastFails;
+    }
+
     let randomIndex;
     do {
       randomIndex = Math.floor(Math.random() * words.length);
@@ -34,8 +47,8 @@ function Nouns() {
   const setSolutionsItemVisible = (index) => {
     setSolutions(
       solutions.map((solution, si) =>
-        si === index ? { ...solution, visible: true } : solution,
-      ),
+        si === index ? { ...solution, visible: true } : solution
+      )
     );
   };
 
@@ -217,6 +230,7 @@ function Nouns() {
             disabled={!showButtonDisabled}
             onClick={() => {
               setNewInLastTen(false);
+              addLastFailsIndexes(actualIndex);
               setNextWord();
             }}
             endIcon="❌"
