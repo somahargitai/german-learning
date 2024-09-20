@@ -51,9 +51,7 @@ function Nouns() {
   }
 
   function setNewInLastTen(newPassed) {
-    // remove the first element, then add the new one
     const newList = [...passedInLastTen.slice(1), newPassed];
-    console.log(newList);
     setPassedInLastTen(newList);
   }
 
@@ -149,12 +147,7 @@ function Nouns() {
           marginBottom: "20px",
         }}
       >
-        <Typography variant="h3">
-          {
-            // words[actualIndex].de
-            actualWord
-          }
-        </Typography>
+        <Typography variant="h3">{actualWord}</Typography>
       </Box>
 
       {/* translation table  */}
@@ -230,13 +223,9 @@ function Nouns() {
           sx={{ mx: 2 }}
         >
           <Button
+            disabled={!showButtonDisabled}
             onClick={() => {
               setNewInLastTen(false);
-              // setPassedInLastTen(
-              //   passedInLastTen.map((passed, index) =>
-              //     index === successCounter ? true : passed
-              //   )
-              // );
               setNextWord();
             }}
             endIcon="❌"
@@ -246,15 +235,9 @@ function Nouns() {
             Failed
           </Button>
           <Button
+            disabled={!showButtonDisabled}
             onClick={() => {
-              // setSuccessCounter(successCounter + 1);
               setNewInLastTen(true);
-
-              // setPassedInLastTen(
-              //   passedInLastTen.map((passed, index) =>
-              //     index === successCounter ? true : passed
-              //   )
-              // );
               setNextWord();
             }}
             endIcon="✅"
