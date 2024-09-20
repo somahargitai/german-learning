@@ -8,22 +8,94 @@ import {
   Container,
   TableContainer,
 } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Nouns() {
   const [passedInLastTen, setPassedInLastTen] = useState(Array(10).fill(false));
   const [successCounter, setSuccessCounter] = useState(0);
   const [actualIndex, setActualIndex] = useState(0);
+  const [actualWord, setActualWord] = useState("");
   const [actualLanguage, setActualLanguage] = useState("de");
+  const [solutions, setSolutions] = useState([
+    { solution: "bla", visible: false },
+    { solution: "blabla", visible: false },
+    { solution: "blablabla", visible: false },
+  ]);
+  const [showButtonDisabled, setShowButtonDisabled] = useState(false);
 
-  function getNextWord() {
+  function getNextWordIndex() {
     let randomIndex;
     do {
       randomIndex = Math.floor(Math.random() * words.length);
     } while (randomIndex === actualIndex);
 
-    setActualIndex(randomIndex);
+    return randomIndex;
   }
+
+  const setSolutionsItemVisible = (index) => {
+    setSolutions(
+      solutions.map((solution, si) =>
+        si === index ? { ...solution, visible: true } : solution
+      )
+    );
+  };
+
+  function setNextPassed() {
+    solutions.forEach((solution) => console.log(solution));
+    if (solutions[0].visible === false) {
+      setSolutionsItemVisible(0);
+      solutions.forEach((solution) => console.log(solution));
+    } else if (solutions[1].visible === false) {
+      setSolutionsItemVisible(1);
+      solutions.forEach((solution) => console.log(solution));
+    } else if (solutions[2].visible === false) {
+      setSolutionsItemVisible(2);
+      solutions.forEach((solution) => console.log(solution));
+      setShowButtonDisabled(true);
+    }
+  }
+
+  function getRandomLanguage() {
+    const languages = ["de", "hu"];
+    const randomIndex = Math.floor(Math.random() * languages.length);
+    const chosenLanguage = languages[randomIndex];
+    return chosenLanguage;
+  }
+
+  useEffect(() => {
+    const language = getRandomLanguage();
+    setActualLanguage(language);
+    const nextWordIndex = getNextWordIndex();
+    const nextWord = words[nextWordIndex][actualLanguage];
+    setActualIndex(nextWordIndex);
+    setActualWord(nextWord);
+
+    console.log(`word: ${nextWord}, i: ${nextWordIndex}, lang: ${language}`);
+
+    const wordItemFound = words.filter(
+      (word) => nextWord === word[actualLanguage]
+    );
+    console.log(wordItemFound);
+
+    const translationSolution =
+      language === "de" ? wordItemFound[0].hu : wordItemFound[0].de;
+    const pluralSolution = wordItemFound[0].de_pl;
+    const pronounSolution = wordItemFound[0].pronoun;
+    const solutionsFound = [
+      { solution: translationSolution, visible: false },
+      { solution: pronounSolution, visible: false },
+      { solution: pluralSolution, visible: false },
+    ];
+    console.log("solutionFound");
+    console.log(solutionsFound);
+
+    setSolutions(solutionsFound);
+  }, []);
+
+  useEffect(() => {
+    console.log("solutions");
+    console.log(solutions);
+  });
 
   return (
     <Container
@@ -75,9 +147,16 @@ function Nouns() {
         sx={{
           marginTop: "40px",
           borderBottom: "3px solid black",
+          paddingBottom: "10px",
+          marginBottom: "20px",
         }}
       >
-        <Typography variant="h2">{words[actualIndex].de}</Typography>
+        <Typography variant="h3">
+          {
+            // words[actualIndex].de
+            actualWord
+          }
+        </Typography>
       </Box>
 
       {/* translation table  */}
@@ -89,29 +168,47 @@ function Nouns() {
         paddingX={2}
         paddingTop={5}
       >
+        {/* label column */}
         <Stack
           direction="column"
           spacing={2}
           width="30%"
+          minHeight={300}
+          justifyContent="center"
           sx={{
-            borderRight: "1px solid black",
+            borderRight: "2px solid black",
             textAlign: "right",
             paddingRight: 2,
           }}
         >
-          <Typography variant="h4">hu</Typography>
+          <Typography variant="h4">
+            {actualLanguage === "hu" ? "de" : "hu"}
+          </Typography>
           <Typography variant="h4">e/r/s</Typography>
           <Typography variant="h4">pl</Typography>
         </Stack>
+
+        {/* value column */}
         <Stack
           direction="column"
           spacing={2}
           width="70%"
-          //
+          minHeight={300}
+          justifyContent="center"
         >
-          <Typography variant="h4">{words[actualIndex].hu}</Typography>
-          <Typography variant="h4">{words[actualIndex].pronoun}</Typography>
-          <Typography variant="h4">die {words[actualIndex].de_pl}</Typography>
+          {solutions.length > 0 && (
+            <>
+              <Typography variant="h4">
+                {solutions[0].visible ? solutions[0].solution : "-"}
+              </Typography>
+              <Typography variant="h4">
+                {solutions[1].visible ? solutions[1].solution : "-"}
+              </Typography>
+              <Typography variant="h4">
+                {solutions[2].visible ? solutions[2].solution : "-"}
+              </Typography>
+            </>
+          )}
         </Stack>
       </Stack>
 
@@ -144,7 +241,12 @@ function Nouns() {
 
         {/* Footer Show */}
         <Stack direction="row" justifyContent="center" sx={{ mt: 2, mx: 2 }}>
-          <Button variant="contained" sx={{ flexGrow: 1 }}>
+          <Button
+            disabled={showButtonDisabled}
+            onClick={() => setNextPassed()}
+            variant="contained"
+            sx={{ flexGrow: 1 }}
+          >
             Show
           </Button>
         </Stack>
