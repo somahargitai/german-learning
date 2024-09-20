@@ -1,32 +1,32 @@
-import { useState } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
-
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { Handshake } from "@mui/icons-material";
 import "./App.css";
 import Home from "./pages/Home";
+import NavBar from "./components/NavBar";
+
+const menuOptions = [
+  {
+    key: "home",
+    label: "Home",
+    href: "/",
+    icon: Handshake,
+  },
+  {
+    key: "about",
+    label: "About",
+    href: "/about",
+    icon: Handshake,
+  },
+];
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Main />} />
-      <Route path="*" element={<Navigate to="/" />} />
-    </Routes>
-  );
-}
-
-function Main() {
-  return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <Home />
+      <NavBar menuOptions={menuOptions} />
+      <Routes>
+        <Route path="/" element={<Home menuOptions={menuOptions} />} />
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
     </>
   );
 }

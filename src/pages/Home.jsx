@@ -1,22 +1,23 @@
-import { useState } from "react";
+import Menu from "../components/Menu";
 
 const Home = () => {
-  const [count, setCount] = useState(0);
-
   return (
     <>
       <h1>Német</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Menu
+        options={[
+          {
+            id: 1,
+            label: "Home",
+            onClick: () => alert("Home"),
+          },
+          {
+            id: 2,
+            label: "About",
+            onClick: () => alert("About"),
+          },
+        ]}
+      />
     </>
   );
 };
