@@ -297,9 +297,9 @@ const words = [
     de_pl: "Viertelstunden",
   },
   { pronoun: "das", de: "Haus", hu: "ház", de_pl: "Häuser" },
-  { pronoun: "die", de: "Eichen", hu: "tölgyek", de_pl: "Eichen" },
+  { pronoun: "die", de: "Eiche", hu: "tölgy", de_pl: "Eichen" },
   { pronoun: "die", de: "Wiese", hu: "rét", de_pl: "Wiesen" },
-  { pronoun: "die", de: "Blumen", hu: "virágok", de_pl: "Blumen" },
+  { pronoun: "die", de: "Blume", hu: "virágok", de_pl: "Blumen" },
   {
     pronoun: "der",
     de: "Blumenstrauß",
