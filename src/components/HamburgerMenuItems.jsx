@@ -1,7 +1,6 @@
-import React from "react";
 import PropTypes from "prop-types";
-import { List, SwipeableDrawer, Toolbar } from "@mui/material";
-import LogoMark from "./LogoMark";
+import { Box, SwipeableDrawer, Toolbar } from "@mui/material";
+import { LogoMark } from "./LogoMark";
 
 const HamburgerMenuItems = ({ open, handleOpenClose, children }) => {
   return (
@@ -39,15 +38,15 @@ const HamburgerMenuItems = ({ open, handleOpenClose, children }) => {
             }}
           />
         </Toolbar>
-        <List
+        <Box
           sx={{
             display: "flex",
             flexDirection: "column",
+            margin: "30px",
           }}
         >
           {children}
-        </List>
-        {/* <DrawerFooter /> */}
+        </Box>
       </SwipeableDrawer>
     </>
   );

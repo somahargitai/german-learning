@@ -1,11 +1,11 @@
-import React, { Fragment, useState } from "react";
+import { Fragment, useState } from "react";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import { AppBar, IconButton, ListItemText, Toolbar } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import HamburgerMenuItems from "./HamburgerMenuItems";
 import HamburgerItem from "./HamburgerItem";
-import GreyLine from "./GreyLine";
+import { LogoMark, LogoMarkFlex } from "./LogoMark";
 
 function NavBar({ menuOptions }) {
   const [open, setOpen] = useState(false);
@@ -22,10 +22,28 @@ function NavBar({ menuOptions }) {
         // sx={{ justifyContent: "right" }}
         sx={{
           display: "flex",
-          justifyContent: "right",
+          justifyContent: "space-between",
         }}
       >
         {/* <MenuIcon /> */}
+        <IconButton
+          // sx={{
+          //   maxWidth: "30px",
+          //   maxHeight: "30px",
+          // }}
+          edge="start"
+          color="inherit"
+          aria-label="menu"
+          onClick={() => navigate("/")}
+        >
+          <LogoMarkFlex
+            style={{
+              width: "40px",
+              height: "40px",
+              padding: "0px",
+            }}
+          />
+        </IconButton>
         <IconButton
           edge="end"
           color="inherit"
@@ -41,7 +59,11 @@ function NavBar({ menuOptions }) {
             <Fragment key={`fr_${option.key}_brand`}>
               <HamburgerItem
                 key={`hi_${option.key}_brand`}
-                onClick={() => navigate(option.href)}
+                onClick={() => {
+                  navigate(option.href);
+                  // close
+                  handleOpenNavMenu(!open);
+                }}
               >
                 <option.icon
                   sx={{
@@ -53,7 +75,7 @@ function NavBar({ menuOptions }) {
                   primary={option.label}
                 />
               </HamburgerItem>
-              <GreyLine />
+              {/* <GreyLine /> */}
             </Fragment>
           ))}
         </HamburgerMenuItems>

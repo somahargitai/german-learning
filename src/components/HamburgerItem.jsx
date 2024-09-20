@@ -1,30 +1,26 @@
 import PropTypes from "prop-types";
-import { Box, ListItemButton } from "@mui/material";
+import { Box, Button } from "@mui/material";
 
 const HamburgerItem = ({ startIcon, children, onClick }) => {
   return (
-    <ListItemButton
+    <Button
+      variant="contained"
       onClick={onClick}
-      sx={{
-        width: "100%",
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
+      sx={{ width: "100%", marginBottom: "10px" }}
     >
       <Box
         sx={{
-          width: "150px",
+          width: "100%",
           display: "flex",
           flexDirection: "row",
           justifyContent: "center",
           alignItems: "center",
         }}
       >
+        {startIcon}
         {children}
       </Box>
-    </ListItemButton>
+    </Button>
   );
 };
 
