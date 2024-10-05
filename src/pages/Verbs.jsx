@@ -99,11 +99,32 @@ function Verbs() {
 
     const translationSolution = language === "de" ? nextItem.hu : nextItem.de;
 
+    // de: "stechen",
+    // hu: "szúrni",
+    // ich: "steche",
+    // du: "stichst",
+    // esersie: "sticht",
+    // wir: "stechen",
+    // ihr: "stecht",
+    // siepl: "stechen",
+
+    // const solutionsRefill = [
+    //   { solution: translationSolution, visible: false },
+    //   // singular
+    //   { solution: nextItem.ichSolution, visible: false },
+    //   { solution: nextItem.duSolution, visible: false },
+    //   { solution: nextItem.esersie, visible: false },
+    //   // plural
+    //   { solution: nextItem.wir, visible: false },
+    //   { solution: nextItem.ihr, visible: false },
+    //   { solution: nextItem.siepl, visible: false },
+    // ];
+
     const solutionsRefill = [
       { solution: translationSolution, visible: false },
       // singular
-      { solution: nextItem.ichSolution, visible: false },
-      { solution: nextItem.duSolution, visible: false },
+      { solution: nextItem.ich, visible: false },
+      { solution: nextItem.du, visible: false },
       { solution: nextItem.esersie, visible: false },
       // plural
       { solution: nextItem.wir, visible: false },
@@ -122,14 +143,6 @@ function Verbs() {
   useEffect(() => {
     setSuccessCounter(passedInLastTen.filter((passed) => passed).length);
   }, [passedInLastTen]);
-
-  // useEffect(() => {
-  //   console.log(`actualIndex: ${actualIndex}`);
-  //   console.log(`actualWord: ${actualWord}`);
-  //   console.log(`actualLanguage: ${actualLanguage}`);
-  //   console.log(`showButtonDisabled: ${showButtonDisabled}`);
-  //   console.log('------------------------------------------');
-  // })
 
   return (
     <Container
@@ -233,17 +246,17 @@ function Verbs() {
                 {solutions[2].visible ? solutions[2].solution : "-"}
               </Typography>
               <Typography variant="h4">
-                {solutions[3].visible ? solutions[0].solution : "-"}
+                {solutions[3].visible ? solutions[3].solution : "-"}
               </Typography>
               {/* plural */}
               <Typography variant="h4">
-                {solutions[4].visible ? solutions[1].solution : "-"}
+                {solutions[4].visible ? solutions[4].solution : "-"}
               </Typography>
               <Typography variant="h4">
-                {solutions[5].visible ? solutions[2].solution : "-"}
+                {solutions[5].visible ? solutions[5].solution : "-"}
               </Typography>
               <Typography variant="h4">
-                {solutions[6].visible ? solutions[3].solution : "-"}
+                {solutions[6].visible ? solutions[6].solution : "-"}
               </Typography>
             </>
           )}
