@@ -98,13 +98,12 @@ function Verbs() {
     setActualWord(nextWord);
 
     const translationSolution = language === "de" ? nextItem.hu : nextItem.de;
-    const duSolution = nextItem.du;
-    const ichSolution = nextItem.ich;
+
     const solutionsRefill = [
       { solution: translationSolution, visible: false },
       // singular
-      { solution: ichSolution, visible: false },
-      { solution: duSolution, visible: false },
+      { solution: nextItem.ichSolution, visible: false },
+      { solution: nextItem.duSolution, visible: false },
       { solution: nextItem.esersie, visible: false },
       // plural
       { solution: nextItem.wir, visible: false },

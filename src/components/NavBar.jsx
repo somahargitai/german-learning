@@ -44,7 +44,7 @@ function NavBar({ menuOptions }) {
             }}
           />
         </IconButton>
-        v1.1.2
+        v1.1.3
         <IconButton
           edge="end"
           color="inherit"
@@ -54,7 +54,6 @@ function NavBar({ menuOptions }) {
         >
           <MenuIcon />
         </IconButton>
-
         <HamburgerMenuItems open={open} handleOpenClose={handleOpenNavMenu}>
           {menuOptions.map((option) => (
             <Fragment key={`fr_${option.key}_brand`}>
@@ -92,7 +91,7 @@ NavBar.propTypes = {
       label: PropTypes.string.isRequired,
       href: PropTypes.string.isRequired,
       icon: PropTypes.elementType.isRequired,
-    }),
+    })
   ),
 };
 

@@ -316,4 +316,10 @@ const words = [
   { pronoun: "die", de: "Schere", hu: "olló", de_pl: "Scheren" },
   { pronoun: "der", de: "Stein", hu: "kő", de_pl: "Steine" },
   { pronoun: "das", de: "Fell", hu: "szőrme", de_pl: "Felle" },
+  {
+    pronoun: "die",
+    de: "Schadenfreude",
+    hu: "káröröm",
+    de_pl: "Schadenfreude",
+  },
 ];
