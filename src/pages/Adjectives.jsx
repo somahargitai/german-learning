@@ -1,27 +1,19 @@
-import { useEffect, useState } from "react";
-import {
-  AppBar,
-  Stack,
-  Toolbar,
-  Box,
-  Typography,
-  Button,
-  Container,
-} from "@mui/material";
+import { useEffect, useState } from 'react';
+import { AppBar, Stack, Toolbar, Box, Typography, Button, Container } from '@mui/material';
 
-import adjCompSupList from "../translations/adjectiveCompSup";
+import adjCompSupList from '../translations/adjectiveCompSup';
 
 function Adjectives() {
   const [lastFailsIndexes, setLastFailsIndexes] = useState([]);
   const [passedInLastTen, setPassedInLastTen] = useState(Array(10).fill(false));
   const [successCounter, setSuccessCounter] = useState(0);
   const [actualIndex, setActualIndex] = useState(0);
-  const [actualWord, setActualWord] = useState("");
-  const [actualLanguage, setActualLanguage] = useState("de");
+  const [actualWord, setActualWord] = useState('');
+  const [actualLanguage, setActualLanguage] = useState('de');
   const [solutions, setSolutions] = useState([
-    { solution: "bla", visible: false },
-    { solution: "blabla", visible: false },
-    { solution: "blablabla", visible: false },
+    { solution: 'bla', visible: false },
+    { solution: 'blabla', visible: false },
+    { solution: 'blablabla', visible: false },
   ]);
   const [showButtonDisabled, setShowButtonDisabled] = useState(false);
 
@@ -48,9 +40,7 @@ function Adjectives() {
 
   const setSolutionsItemVisible = (index) => {
     setSolutions(
-      solutions.map((solution, si) =>
-        si === index ? { ...solution, visible: true } : solution
-      )
+      solutions.map((solution, si) => (si === index ? { ...solution, visible: true } : solution))
     );
   };
 
@@ -71,7 +61,7 @@ function Adjectives() {
   }
 
   function getRandomLanguage() {
-    const languages = ["de", "hu"];
+    const languages = ['de', 'hu'];
     const randomIndex = Math.floor(Math.random() * languages.length);
     const chosenLanguage = languages[randomIndex];
     return chosenLanguage;
@@ -87,7 +77,7 @@ function Adjectives() {
     setActualIndex(nextWordIndex);
     setActualWord(nextWord);
 
-    const translationSolution = language === "de" ? nextItem.hu : nextItem.de;
+    const translationSolution = language === 'de' ? nextItem.hu : nextItem.de;
     const supSolution = nextItem.de_su;
     const compSolution = nextItem.de_co;
     const solutionsRefill = [
@@ -111,30 +101,30 @@ function Adjectives() {
   return (
     <Container
       sx={{
-        display: "flex",
-        flexDirection: "column",
-        width: "100%",
-        height: "100vh",
+        display: 'flex',
+        flexDirection: 'column',
+        width: '100%',
+        height: '100vh',
         // 56+56+6+16
-        paddingTop: "134px",
+        paddingTop: '134px',
         marginTop: 0,
       }}
     >
       {/* subheader  */}
-      <AppBar position="fixed" sx={{ marginTop: "60px" }}>
+      <AppBar position="fixed" sx={{ marginTop: '60px' }}>
         <Toolbar
           sx={{
             // "primary.main", "primary.light",
-            backgroundColor: "primary.dark",
-            color: "white",
-            justifyContent: "space-between",
+            backgroundColor: 'primary.dark',
+            color: 'white',
+            justifyContent: 'space-between',
           }}
         >
           <Typography
             variant="h5"
             sx={{
-              fontWeight: "bold",
-              textTransform: "uppercase",
+              fontWeight: 'bold',
+              textTransform: 'uppercase',
             }}
           >
             Adjectives
@@ -148,9 +138,9 @@ function Adjectives() {
       <Box
         id="word"
         sx={{
-          marginTop: "10px",
-          borderBottom: "3px solid black",
-          paddingBottom: "10px",
+          marginTop: '10px',
+          borderBottom: '3px solid black',
+          paddingBottom: '10px',
         }}
       >
         <Typography variant="h2">{actualWord}</Typography>
@@ -173,36 +163,28 @@ function Adjectives() {
           minHeight={300}
           justifyContent="center"
           sx={{
-            borderRight: "2px solid black",
-            textAlign: "right",
+            borderRight: '2px solid black',
+            textAlign: 'right',
             paddingRight: 2,
           }}
         >
-          <Typography variant="h4">
-            {actualLanguage === "hu" ? "de" : "hu"}
-          </Typography>
+          <Typography variant="h4">{actualLanguage === 'hu' ? 'de' : 'hu'}</Typography>
           <Typography variant="h4">comp</Typography>
           <Typography variant="h4">sup</Typography>
         </Stack>
 
         {/* value column */}
-        <Stack
-          direction="column"
-          spacing={2}
-          width="70%"
-          minHeight={300}
-          justifyContent="center"
-        >
+        <Stack direction="column" spacing={2} width="70%" minHeight={300} justifyContent="center">
           {solutions.length > 0 && (
             <>
               <Typography variant="h4">
-                {solutions[0].visible ? solutions[0].solution : "-"}
+                {solutions[0].visible ? solutions[0].solution : '-'}
               </Typography>
               <Typography variant="h4">
-                {solutions[1].visible ? solutions[1].solution : "-"}
+                {solutions[1].visible ? solutions[1].solution : '-'}
               </Typography>
               <Typography variant="h4">
-                {solutions[2].visible ? solutions[2].solution : "-"}
+                {solutions[2].visible ? solutions[2].solution : '-'}
               </Typography>
             </>
           )}
@@ -212,22 +194,17 @@ function Adjectives() {
       {/* Footer */}
       <Box
         sx={{
-          position: "fixed",
+          position: 'fixed',
           left: 0,
           bottom: 0,
-          width: "100%",
+          width: '100%',
           padding: 2,
-          bgcolor: "background.paper",
-          boxShadow: "0 -2px 10px rgba(0,0,0,0.1)",
+          bgcolor: 'background.paper',
+          boxShadow: '0 -2px 10px rgba(0,0,0,0.1)',
         }}
       >
         {/* Footer Markers */}
-        <Stack
-          direction="row"
-          spacing={2}
-          justifyContent="space-between"
-          sx={{ mx: 2 }}
-        >
+        <Stack direction="row" spacing={2} justifyContent="space-between" sx={{ mx: 2 }}>
           <Button
             disabled={!showButtonDisabled}
             onClick={() => {

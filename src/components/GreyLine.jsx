@@ -1,12 +1,12 @@
-import { Divider } from "@mui/material";
+import { Divider } from '@mui/material';
 
 const GreyLine = () => {
   return (
     <Divider
       sx={{
-        width: "100%",
-        margin: "0px",
-        color: "black",
+        width: '100%',
+        margin: '0px',
+        color: 'black',
       }}
     />
   );

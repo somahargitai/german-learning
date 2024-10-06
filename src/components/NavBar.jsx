@@ -1,11 +1,11 @@
-import { Fragment, useState } from "react";
-import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom";
-import { AppBar, IconButton, ListItemText, Toolbar } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
-import HamburgerMenuItems from "./HamburgerMenuItems";
-import HamburgerItem from "./HamburgerItem";
-import { LogoMark, LogoMarkFlex } from "./LogoMark";
+import { Fragment, useState } from 'react';
+import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
+import { AppBar, IconButton, ListItemText, Toolbar } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import HamburgerMenuItems from './HamburgerMenuItems';
+import HamburgerItem from './HamburgerItem';
+import { LogoMark, LogoMarkFlex } from './LogoMark';
 
 function NavBar({ menuOptions }) {
   const [open, setOpen] = useState(false);
@@ -21,8 +21,8 @@ function NavBar({ menuOptions }) {
         // put contined  elements on the right
         // sx={{ justifyContent: "right" }}
         sx={{
-          display: "flex",
-          justifyContent: "space-between",
+          display: 'flex',
+          justifyContent: 'space-between',
         }}
       >
         {/* <MenuIcon /> */}
@@ -34,17 +34,17 @@ function NavBar({ menuOptions }) {
           edge="start"
           color="inherit"
           aria-label="menu"
-          onClick={() => navigate("/")}
+          onClick={() => navigate('/')}
         >
           <LogoMarkFlex
             style={{
-              width: "40px",
-              height: "40px",
-              padding: "0px",
+              width: '40px',
+              height: '40px',
+              padding: '0px',
             }}
           />
         </IconButton>
-        v1.1.5
+        v1.1.6
         <IconButton
           edge="end"
           color="inherit"
@@ -70,10 +70,7 @@ function NavBar({ menuOptions }) {
                     mr: 1,
                   }}
                 />
-                <ListItemText
-                  key={`lit_${option.key}_brand`}
-                  primary={option.label}
-                />
+                <ListItemText key={`lit_${option.key}_brand`} primary={option.label} />
               </HamburgerItem>
               {/* <GreyLine /> */}
             </Fragment>

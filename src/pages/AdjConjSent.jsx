@@ -1,28 +1,20 @@
-import { useEffect, useState } from "react";
-import {
-  AppBar,
-  Stack,
-  Toolbar,
-  Box,
-  Typography,
-  Button,
-  Container,
-} from "@mui/material";
+import { useEffect, useState } from 'react';
+import { AppBar, Stack, Toolbar, Box, Typography, Button, Container } from '@mui/material';
 
-import adjectiveConjugationSentences from "../translations/adjectiveConjSent";
+import adjectiveConjugationSentences from '../translations/adjectiveConjSent';
 
 const AdjConjSent = () => {
   const [lastFailsIndexes, setLastFailsIndexes] = useState([]);
   const [passedInLastTen, setPassedInLastTen] = useState(Array(10).fill(false));
   const [successCounter, setSuccessCounter] = useState(0);
   const [actualIndex, setActualIndex] = useState(0);
-  const [actualSentence, setActualSentence] = useState("");
+  const [actualSentence, setActualSentence] = useState('');
   // const [actualLanguage, setActualLanguage] = useState("de");
-  const language = "hu";
+  const language = 'hu';
   const [showButtonDisabled, setShowButtonDisabled] = useState(false);
   const [solutions, setSolutions] = useState([
-    { solution: "bla", visible: false },
-    { solution: "blabla", visible: false },
+    { solution: 'bla', visible: false },
+    { solution: 'blabla', visible: false },
   ]);
 
   function addLastFailsIndexes(index) {
@@ -40,9 +32,7 @@ const AdjConjSent = () => {
 
     let randomIndex;
     do {
-      randomIndex = Math.floor(
-        Math.random() * adjectiveConjugationSentences.length
-      );
+      randomIndex = Math.floor(Math.random() * adjectiveConjugationSentences.length);
     } while (randomIndex === actualIndex);
 
     return randomIndex;
@@ -50,9 +40,7 @@ const AdjConjSent = () => {
 
   const setSolutionsItemVisible = (index) => {
     setSolutions(
-      solutions.map((solution, si) =>
-        si === index ? { ...solution, visible: true } : solution
-      )
+      solutions.map((solution, si) => (si === index ? { ...solution, visible: true } : solution))
     );
   };
 
@@ -77,7 +65,7 @@ const AdjConjSent = () => {
     setActualIndex(nextWordIndex);
     setActualSentence(nextWord);
 
-    const translationSolution = language === "de" ? nextItem.hu : nextItem.de;
+    const translationSolution = language === 'de' ? nextItem.hu : nextItem.de;
     const pronounSolution = nextItem.pronoun;
     const solutionsRefill = [
       { solution: translationSolution, visible: false },
@@ -99,28 +87,28 @@ const AdjConjSent = () => {
   return (
     <Container
       sx={{
-        display: "flex",
-        flexDirection: "column",
-        width: "100%",
-        height: "100vh",
+        display: 'flex',
+        flexDirection: 'column',
+        width: '100%',
+        height: '100vh',
         // 56+56+6+16
-        paddingTop: "134px",
+        paddingTop: '134px',
         marginTop: 0,
       }}
     >
-      <AppBar position="fixed" sx={{ marginTop: "60px" }}>
+      <AppBar position="fixed" sx={{ marginTop: '60px' }}>
         <Toolbar
           sx={{
-            backgroundColor: "primary.dark",
-            color: "white",
-            justifyContent: "space-between",
+            backgroundColor: 'primary.dark',
+            color: 'white',
+            justifyContent: 'space-between',
           }}
         >
           <Typography
             variant="h4"
             sx={{
-              fontWeight: "bold",
-              textTransform: "uppercase",
+              fontWeight: 'bold',
+              textTransform: 'uppercase',
             }}
           >
             Adjective Conjugation in Sentences
@@ -134,39 +122,32 @@ const AdjConjSent = () => {
       <Box
         id="word"
         sx={{
-          marginTop: "10px",
-          borderBottom: "3px solid black",
-          paddingBottom: "10px",
-          marginBottom: "20px",
+          marginTop: '10px',
+          borderBottom: '3px solid black',
+          paddingBottom: '10px',
+          marginBottom: '20px',
         }}
       >
         <Typography variant="h2">{actualSentence}</Typography>
       </Box>
 
       {/* translation   */}
-      <Typography variant="h4">
-        {solutions[0].visible ? solutions[0].solution : "-"}
-      </Typography>
+      <Typography variant="h4">{solutions[0].visible ? solutions[0].solution : '-'}</Typography>
 
       {/* Footer */}
       <Box
         sx={{
-          position: "fixed",
+          position: 'fixed',
           left: 0,
           bottom: 0,
-          width: "100%",
+          width: '100%',
           padding: 2,
-          bgcolor: "background.paper",
-          boxShadow: "0 -2px 10px rgba(0,0,0,0.1)",
+          bgcolor: 'background.paper',
+          boxShadow: '0 -2px 10px rgba(0,0,0,0.1)',
         }}
       >
         {/* Footer Markers */}
-        <Stack
-          direction="row"
-          spacing={2}
-          justifyContent="space-between"
-          sx={{ mx: 2 }}
-        >
+        <Stack direction="row" spacing={2} justifyContent="space-between" sx={{ mx: 2 }}>
           <Button
             disabled={!showButtonDisabled}
             onClick={() => {

@@ -1,27 +1,27 @@
-import { createTheme } from "@mui/material/styles";
+import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#dd9800",
+      main: '#dd9800',
     },
     secondary: {
-      main: "#3f51b5",
+      main: '#3f51b5',
     },
   },
   typography: {
     h1: {
-      fontSize: "2rem",
+      fontSize: '2rem',
     },
     h2: {
-      fontSize: "1.5rem",
-      fontWeight: "bold",
+      fontSize: '1.5rem',
+      fontWeight: 'bold',
     },
     h3: {
-      fontSize: "1rem",
+      fontSize: '1rem',
     },
     h4: {
-      fontSize: "1rem",
+      fontSize: '1rem',
     },
   },
 });

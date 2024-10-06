@@ -39,8 +39,6 @@ function Nouns() {
   const [solutions, setSolutions] = useState([]);
 
   // FUNCTIONs
-
-  // get random language, next word index and fill solutions
   function setNextWord() {
     const language = getRandomLanguage();
     const nextWordIndex = getNextWordIndex();
@@ -53,12 +51,10 @@ function Nouns() {
     setActualWord(nextWord);
 
     const translationSolution = language === 'de' ? nextItem.hu : nextItem.de;
-    const pluralSolution = nextItem.de_pl;
-    const pronounSolution = nextItem.pronoun;
     const solutionsRefill = [
       { solution: translationSolution, visible: false },
-      { solution: pronounSolution, visible: false },
-      { solution: pluralSolution, visible: false },
+      { solution: nextItem.pronoun, visible: false },
+      { solution: nextItem.de_pl, visible: false },
     ];
 
     setSolutions(solutionsRefill);
@@ -118,7 +114,7 @@ function Nouns() {
   }
 
   // HANDLERs
-  function handlehandleChangeWordSet(wordSet) {
+  function handleChangeWordSet(wordSet) {
     if (wordSet === 'all') {
       setNounPronounsAndPlurals([
         ...otherNouns,
@@ -361,7 +357,7 @@ function Nouns() {
           <Stack spacing={2}>
             <ModalButton
               label="all"
-              handlehandleChangeWordSet={() => {
+              handleChangeWordSet={() => {
                 setNounPronounsAndPlurals([
                   ...otherNouns,
                   ...family,
@@ -374,30 +370,11 @@ function Nouns() {
                 setFilterModalOpen(false);
               }}
             />
-            <ModalButton label="otherNouns" handlehandleChangeWordSet={handlehandleChangeWordSet} />
-            <ModalButton label="family" handlehandleChangeWordSet={handlehandleChangeWordSet} />
-            <ModalButton label="animals" handlehandleChangeWordSet={handlehandleChangeWordSet} />
-            <ModalButton label="bodyParts" handlehandleChangeWordSet={handlehandleChangeWordSet} />
-            <ModalButton label="food" handlehandleChangeWordSet={handlehandleChangeWordSet} />
-
-            {/* <Button
-              variant="contained"
-              onClick={() => {
-                // Handle option 2
-                setFilterModalOpen(false);
-              }}
-            >
-              Option 2
-            </Button>
-            <Button
-              variant="contained"
-              onClick={() => {
-                // Handle option 3
-                setFilterModalOpen(false);
-              }}
-            >
-              Option 3
-            </Button> */}
+            <ModalButton label="otherNouns" handleChangeWordSet={handleChangeWordSet} />
+            <ModalButton label="family" handleChangeWordSet={handleChangeWordSet} />
+            <ModalButton label="animals" handleChangeWordSet={handleChangeWordSet} />
+            <ModalButton label="bodyParts" handleChangeWordSet={handleChangeWordSet} />
+            <ModalButton label="food" handleChangeWordSet={handleChangeWordSet} />
           </Stack>
         </Box>
       </Modal>
@@ -405,12 +382,12 @@ function Nouns() {
   );
 }
 
-function ModalButton({ label, handlehandleChangeWordSet }) {
+function ModalButton({ label, handleChangeWordSet }) {
   return (
     <Button
       variant="contained"
       onClick={() => {
-        handlehandleChangeWordSet(label);
+        handleChangeWordSet(label);
       }}
     >
       {label}

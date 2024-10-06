@@ -1,14 +1,14 @@
-import PropTypes from "prop-types";
-import { List, Typography } from "@mui/material";
+import PropTypes from 'prop-types';
+import { List, Typography } from '@mui/material';
 
-import HamburgerItem from "./HamburgerItem.jsx";
+import HamburgerItem from './HamburgerItem.jsx';
 
 const Menu = ({ options }) => {
   return (
     <List
       sx={{
-        display: "flex",
-        flexDirection: "column",
+        display: 'flex',
+        flexDirection: 'column',
       }}
     >
       {options.map((option) => (
@@ -26,7 +26,7 @@ Menu.propTypes = {
       id: PropTypes.number.isRequired,
       label: PropTypes.string.isRequired,
       onClick: PropTypes.func.isRequired,
-    }),
+    })
   ),
 };
 

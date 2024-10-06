@@ -1,20 +1,16 @@
-import PropTypes from "prop-types";
-import { Box, Button } from "@mui/material";
+import PropTypes from 'prop-types';
+import { Box, Button } from '@mui/material';
 
 const HamburgerItem = ({ startIcon, children, onClick }) => {
   return (
-    <Button
-      variant="contained"
-      onClick={onClick}
-      sx={{ width: "100%", marginBottom: "10px" }}
-    >
+    <Button variant="contained" onClick={onClick} sx={{ width: '100%', marginBottom: '10px' }}>
       <Box
         sx={{
-          width: "100%",
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-          alignItems: "center",
+          width: '100%',
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'center',
+          alignItems: 'center',
         }}
       >
         {startIcon}
