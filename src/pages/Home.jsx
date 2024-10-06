@@ -6,6 +6,7 @@ import Menu from "../components/Menu";
 import HamburgerItem from "../components/HamburgerItem";
 
 function Home({ menuOptions }) {
+  console.log('Home');
   const navigate = useNavigate();
   return (
     <Box

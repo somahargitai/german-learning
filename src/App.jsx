@@ -1,13 +1,14 @@
-import { Route, Routes, Navigate } from "react-router-dom";
-import { Handshake } from "@mui/icons-material";
-import "./App.css";
-import Home from "./pages/Home";
-import Nouns from "./pages/Nouns";
-import Adjectives from "./pages/Adjectives";
-import AdjConjSent from "./pages/AdjConjSent";
-import Verbs from "./pages/Verbs";
-import NavBar from "./components/NavBar";
-import Phrases from "./pages/Phrases";
+import { Route, Routes, Navigate } from 'react-router-dom';
+import { Handshake } from '@mui/icons-material';
+
+import './App.css';
+import Adjectives from './pages/Adjectives';
+import AdjConjSent from './pages/AdjConjSent';
+import Home from './pages/Home';
+import NavBar from './components/NavBar';
+import Nouns from './pages/Nouns';
+import Phrases from './pages/Phrases';
+import Verbs from './pages/Verbs';
 
 const menuOptions = [
   // {
@@ -17,27 +18,27 @@ const menuOptions = [
   //   icon: Handshake,
   // },
   {
-    key: "nouns",
-    label: "Nouns",
-    href: "/nouns",
+    key: 'nouns',
+    label: 'Nouns',
+    href: '/nouns',
     icon: Handshake,
   },
   {
-    key: "adjectives",
-    label: "Adjectives",
-    href: "/adjectives",
+    key: 'adjectives',
+    label: 'Adjectives',
+    href: '/adjectives',
     icon: Handshake,
   },
   {
-    key: "verbs",
-    label: "Verbs",
-    href: "/verbs",
+    key: 'verbs',
+    label: 'Verbs',
+    href: '/verbs',
     icon: Handshake,
   },
   {
-    key: "adjectives/sentences",
-    label: "Adjectives Sentences",
-    href: "/adjectives/sentences",
+    key: 'adjectives/sentences',
+    label: 'Adjectives Sentences',
+    href: '/adjectives/sentences',
     icon: Handshake,
   },
   // {
