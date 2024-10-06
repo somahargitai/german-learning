@@ -9,20 +9,20 @@ import {
   Container,
 } from "@mui/material";
 
-import nounPronounsAndPlurals from "../translations/nounPronPlur";
+import adjectiveConjugationSentences from "../translations/adjectiveConjSent";
 
-function Nouns() {
+const AdjConjSent = () => {
   const [lastFailsIndexes, setLastFailsIndexes] = useState([]);
   const [passedInLastTen, setPassedInLastTen] = useState(Array(10).fill(false));
   const [successCounter, setSuccessCounter] = useState(0);
   const [actualIndex, setActualIndex] = useState(0);
-  const [actualWord, setActualWord] = useState("");
-  const [actualLanguage, setActualLanguage] = useState("de");
+  const [actualSentence, setActualSentence] = useState("");
+  // const [actualLanguage, setActualLanguage] = useState("de");
+  const language = "hu";
   const [showButtonDisabled, setShowButtonDisabled] = useState(false);
   const [solutions, setSolutions] = useState([
     { solution: "bla", visible: false },
     { solution: "blabla", visible: false },
-    { solution: "blablabla", visible: false },
   ]);
 
   function addLastFailsIndexes(index) {
@@ -40,7 +40,9 @@ function Nouns() {
 
     let randomIndex;
     do {
-      randomIndex = Math.floor(Math.random() * nounPronounsAndPlurals.length);
+      randomIndex = Math.floor(
+        Math.random() * adjectiveConjugationSentences.length
+      );
     } while (randomIndex === actualIndex);
 
     return randomIndex;
@@ -57,10 +59,7 @@ function Nouns() {
   function setNextPassed() {
     if (solutions[0].visible === false) {
       setSolutionsItemVisible(0);
-    } else if (solutions[1].visible === false) {
-      setSolutionsItemVisible(1);
-    } else if (solutions[2].visible === false) {
-      setSolutionsItemVisible(2);
+
       setShowButtonDisabled(true);
     }
   }
@@ -70,30 +69,19 @@ function Nouns() {
     setPassedInLastTen(newList);
   }
 
-  function getRandomLanguage() {
-    const languages = ["de", "hu"];
-    const randomIndex = Math.floor(Math.random() * languages.length);
-    const chosenLanguage = languages[randomIndex];
-    return chosenLanguage;
-  }
-
   function setNextWord() {
-    const language = getRandomLanguage();
     const nextWordIndex = getNextWordIndex();
-    const nextItem = nounPronounsAndPlurals[nextWordIndex];
+    const nextItem = adjectiveConjugationSentences[nextWordIndex];
     const nextWord = nextItem[language];
 
-    setActualLanguage(language);
     setActualIndex(nextWordIndex);
-    setActualWord(nextWord);
+    setActualSentence(nextWord);
 
     const translationSolution = language === "de" ? nextItem.hu : nextItem.de;
-    const pluralSolution = nextItem.de_pl;
     const pronounSolution = nextItem.pronoun;
     const solutionsRefill = [
       { solution: translationSolution, visible: false },
       { solution: pronounSolution, visible: false },
-      { solution: pluralSolution, visible: false },
     ];
 
     setSolutions(solutionsRefill);
@@ -120,25 +108,24 @@ function Nouns() {
         marginTop: 0,
       }}
     >
-      {/* subheader  */}
       <AppBar position="fixed" sx={{ marginTop: "60px" }}>
         <Toolbar
           sx={{
-            // "primary.main", "primary.light",
             backgroundColor: "primary.dark",
             color: "white",
             justifyContent: "space-between",
           }}
         >
           <Typography
-            variant="h5"
+            variant="h4"
             sx={{
               fontWeight: "bold",
               textTransform: "uppercase",
             }}
           >
-            Nouns
+            Adjective Conjugation in Sentences
           </Typography>
+
           <Typography variant="h4">{successCounter} / 10</Typography>
         </Toolbar>
       </AppBar>
@@ -153,61 +140,13 @@ function Nouns() {
           marginBottom: "20px",
         }}
       >
-        <Typography variant="h2">{actualWord}</Typography>
+        <Typography variant="h2">{actualSentence}</Typography>
       </Box>
 
-      {/* translation table  */}
-      <Stack
-        direction="row"
-        spacing={2}
-        justifyContent="center"
-        width="100%"
-        paddingX={2}
-        paddingTop={3}
-      >
-        {/* label column */}
-        <Stack
-          direction="column"
-          spacing={2}
-          width="30%"
-          minHeight={300}
-          justifyContent="center"
-          sx={{
-            borderRight: "2px solid black",
-            textAlign: "right",
-            paddingRight: 2,
-          }}
-        >
-          <Typography variant="h4">
-            {actualLanguage === "hu" ? "de" : "hu"}
-          </Typography>
-          <Typography variant="h4">e/r/s</Typography>
-          <Typography variant="h4">pl</Typography>
-        </Stack>
-
-        {/* value column */}
-        <Stack
-          direction="column"
-          spacing={2}
-          width="70%"
-          minHeight={300}
-          justifyContent="center"
-        >
-          {solutions.length > 0 && (
-            <>
-              <Typography variant="h4">
-                {solutions[0].visible ? solutions[0].solution : "-"}
-              </Typography>
-              <Typography variant="h4">
-                {solutions[1].visible ? solutions[1].solution : "-"}
-              </Typography>
-              <Typography variant="h4">
-                {solutions[2].visible ? solutions[2].solution : "-"}
-              </Typography>
-            </>
-          )}
-        </Stack>
-      </Stack>
+      {/* translation   */}
+      <Typography variant="h4">
+        {solutions[0].visible ? solutions[0].solution : "-"}
+      </Typography>
 
       {/* Footer */}
       <Box
@@ -269,6 +208,6 @@ function Nouns() {
       </Box>
     </Container>
   );
-}
+};
 
-export default Nouns;
+export default AdjConjSent;

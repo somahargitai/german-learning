@@ -9,6 +9,8 @@ import {
   Container,
 } from "@mui/material";
 
+import VerbConjList from "../translations/verbConjugation";
+
 function Verbs() {
   const [lastFailsIndexes, setLastFailsIndexes] = useState([]);
   const [passedInLastTen, setPassedInLastTen] = useState(Array(10).fill(false));
@@ -42,7 +44,7 @@ function Verbs() {
 
     let randomIndex;
     do {
-      randomIndex = Math.floor(Math.random() * words.length);
+      randomIndex = Math.floor(Math.random() * VerbConjList.length);
     } while (randomIndex === actualIndex);
 
     return randomIndex;
@@ -90,7 +92,7 @@ function Verbs() {
   function setNextWord() {
     const language = getRandomLanguage();
     const nextWordIndex = getNextWordIndex();
-    const nextItem = words[nextWordIndex];
+    const nextItem = VerbConjList[nextWordIndex];
     const nextWord = nextItem[language];
 
     setActualLanguage(language);
@@ -326,226 +328,3 @@ function Verbs() {
 }
 
 export default Verbs;
-
-const words = [
-  {
-    de: "ab|nehmen",
-    hu: "felszáll, lefogy",
-    ich: "nehme ab",
-    du: "nimmst ab",
-    esersie: "nimmt ab",
-    wir: "nehmen ab",
-    ihr: "nehmt ab",
-    siepl: "nehmen ab",
-  },
-  {
-    de: "aus|brechen",
-    hu: "kitör (vulkán)",
-    ich: "breche aus",
-    du: "brichst aus",
-    esersie: "bricht aus",
-    wir: "brechen aus",
-    ihr: "brecht aus",
-    siepl: "brechen aus",
-  },
-  {
-    de: "brechen",
-    hu: "tör",
-    ich: "breche",
-    du: "brichst",
-    esersie: "bricht",
-    wir: "brechen",
-    ihr: "brecht",
-    siepl: "brechen",
-  },
-  {
-    de: "erschrecken",
-    hu: "megijed",
-    ich: "erschrecke",
-    du: "erschrickst",
-    esersie: "erschrickt",
-    wir: "erschrecken",
-    ihr: "erschreckt",
-    siepl: "erschrecken",
-  },
-  {
-    de: "essen",
-    hu: "eszik",
-    ich: "esse",
-    du: "isst",
-    esersie: "isst",
-    wir: "essen",
-    ihr: "esst",
-    siepl: "essen",
-  },
-  {
-    de: "fressen",
-    hu: "eszik (zabál, mint az állat)",
-    ich: "fresse",
-    du: "frisst",
-    esersie: "frisst",
-    wir: "fressen",
-    ihr: "fresst",
-    siepl: "fressen",
-  },
-  {
-    de: "geben",
-    hu: "adni",
-    ich: "gebe",
-    du: "gibst",
-    esersie: "gibt",
-    wir: "geben",
-    ihr: "gebt",
-    siepl: "geben",
-  },
-  {
-    de: "gelten",
-    hu: "jelentkezik",
-    ich: "gelte",
-    du: "giltst",
-    esersie: "gilt",
-    wir: "gelten",
-    ihr: "geltet",
-    siepl: "gelten",
-  },
-  {
-    de: "helfen",
-    hu: "segít",
-    ich: "helfe",
-    du: "hilfst",
-    esersie: "hilft",
-    wir: "helfen",
-    ihr: "helft",
-    siepl: "helfen",
-  },
-  {
-    de: "messen",
-    hu: "mér",
-    ich: "messe",
-    du: "misst",
-    esersie: "misst",
-    wir: "messen",
-    ihr: "messt",
-    siepl: "messen",
-  },
-  {
-    de: "nehmen",
-    hu: "szerez, elvesz",
-    ich: "nehme",
-    du: "nimmst",
-    esersie: "nimmt",
-    wir: "nehmen",
-    ihr: "nehmt",
-    siepl: "nehmen",
-  },
-  {
-    de: "quellen",
-    hu: "fakad, dülled, árad, dagad",
-    ich: "quelle",
-    du: "quillst",
-    esersie: "quillt",
-    wir: "quellen",
-    ihr: "quellt",
-    siepl: "quellen",
-  },
-  {
-    de: "schmelzen",
-    hu: "megolvad",
-    ich: "schmelze",
-    du: "schmilzt",
-    esersie: "schmilzt",
-    wir: "schmelzen",
-    ihr: "schmelzt",
-    siepl: "schmelzen",
-  },
-  {
-    de: "sprechen",
-    hu: "beszél",
-    ich: "spreche",
-    du: "sprichst",
-    esersie: "spricht",
-    wir: "sprechen",
-    ihr: "sprecht",
-    siepl: "sprechen",
-  },
-  {
-    de: "stechen",
-    hu: "szúrni",
-    ich: "steche",
-    du: "stichst",
-    esersie: "sticht",
-    wir: "stechen",
-    ihr: "stecht",
-    siepl: "stechen",
-  },
-  {
-    de: "sterben",
-    hu: "meghal",
-    ich: "sterbe",
-    du: "stirbst",
-    esersie: "stirbt",
-    wir: "sterben",
-    ihr: "sterbt",
-    siepl: "sterben",
-  },
-  {
-    de: "treffen",
-    hu: "találkozik",
-    ich: "treffe",
-    du: "triffst",
-    esersie: "trifft",
-    wir: "treffen",
-    ihr: "trefft",
-    siepl: "treffen",
-  },
-  {
-    de: "treten",
-    hu: "rúg",
-    ich: "trete",
-    du: "trittst",
-    esersie: "tritt",
-    wir: "treten",
-    ihr: "tretet",
-    siepl: "treten",
-  },
-  {
-    de: "verderben",
-    hu: "elront",
-    ich: "verderbe",
-    du: "verdirbst",
-    esersie: "verdirbt",
-    wir: "verderben",
-    ihr: "verderbt",
-    siepl: "verderben",
-  },
-  {
-    de: "vergessen",
-    hu: "elfelejt",
-    ich: "vergesse",
-    du: "vergisst",
-    esersie: "vergisst",
-    wir: "vergessen",
-    ihr: "vergesst",
-    siepl: "vergessen",
-  },
-  {
-    de: "werfen",
-    hu: "dob",
-    ich: "werfe",
-    du: "wirfst",
-    esersie: "wirft",
-    wir: "werfen",
-    ihr: "werft",
-    siepl: "werfen",
-  },
-  {
-    de: "zu|nehmen",
-    hu: "növekedik, erősödik",
-    ich: "nehme zu",
-    du: "nimmst zu",
-    esersie: "nimmt zu",
-    wir: "nehmen zu",
-    ihr: "nehmt zu",
-    siepl: "nehmen zu",
-  },
-];

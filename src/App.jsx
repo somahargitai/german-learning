@@ -4,6 +4,7 @@ import "./App.css";
 import Home from "./pages/Home";
 import Nouns from "./pages/Nouns";
 import Adjectives from "./pages/Adjectives";
+import AdjConjSent from "./pages/AdjConjSent";
 import Verbs from "./pages/Verbs";
 import NavBar from "./components/NavBar";
 import Phrases from "./pages/Phrases";
@@ -33,6 +34,12 @@ const menuOptions = [
     href: "/verbs",
     icon: Handshake,
   },
+  {
+    key: "adjectives/sentences",
+    label: "Adjectives Sentences",
+    href: "/adjectives/sentences",
+    icon: Handshake,
+  },
   // {
   //   key: "phrases",
   //   label: "Phrases",
@@ -50,6 +57,7 @@ function App() {
         <Route path="*" element={<Navigate to="/" />} />
         <Route path="/nouns" element={<Nouns />} />
         <Route path="/adjectives" element={<Adjectives />} />
+        <Route path="/adjectives/sentences" element={<AdjConjSent />} />
         <Route path="/verbs" element={<Verbs />} />
         <Route path="/phrases" element={<Phrases />} />
       </Routes>
