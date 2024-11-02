@@ -13,6 +13,15 @@ export const otherNouns = [
   { pronoun: 'die', de: 'Stimme', hu: 'hang', de_pl: 'Stimmen' },
   { pronoun: 'die', de: 'Schere', hu: 'olló', de_pl: 'Scheren' },
   { pronoun: 'die', de: 'Schadenfreude', hu: 'káröröm', de_pl: 'Schadenfreude' },
+  // gond  Sorgen
+  { pronoun: 'die', de: 'Sorge', hu: 'aggodalom, gond', de_pl: 'Sorgen' },
+  { pronoun: 'das', de: 'Gedachnis', hu: 'memória', de_pl: 'Gedachnisse' },
+  { pronoun: 'der', de: 'Mut', hu: 'bátorság', de_pl: 'Mute' },
+  { pronoun: 'der', de: 'Schlüssel', hu: 'kulcs', de_pl: 'Schlüssel' },
+  // vizek
+  { pronoun: 'die', de: 'See', hu: 'tó', de_pl: 'Seen' },
+  { pronoun: 'das', de: 'Meer', hu: 'tenger', de_pl: 'Meere' },
+  { pronoun: 'die', de: 'Insel', hu: 'sziget', de_pl: 'Inseln' },
 ];
 
 export const family = [
@@ -59,6 +68,7 @@ export const house = [
 
 export const clothes = [
   // öltözködés
+  { hu: 'alsónemű', de: 'Strümpfe' },
   { pronoun: 'die', de: 'Mütze', hu: 'sapka', de_pl: 'Mützen' },
   { pronoun: 'das', de: 'Käppchen', hu: 'kis sapka', de_pl: 'Käppchen' },
   { pronoun: 'das', de: 'Kleid', hu: 'ruha', de_pl: 'Kleider' },
@@ -74,6 +84,7 @@ export const clothes = [
   { pronoun: 'der', de: 'Stiefel', hu: 'csizma', de_pl: 'Stiefel' },
   { pronoun: 'das', de: 'T-Shirt', hu: 'póló', de_pl: 'T-Shirts' },
   { pronoun: 'die', de: 'Unterhose', hu: 'alsónadrág', de_pl: 'Unterhosen' },
+  { pronoun: 'die', de: 'Brille', hu: 'szemüveg', de_pl: 'Brillen' },
 ];
 
 export const bodyParts = [

@@ -8,7 +8,7 @@ import Home from './pages/Home';
 import NavBar from './components/NavBar';
 import Nouns from './pages/Nouns';
 import Phrases from './pages/Phrases';
-
+import Search from './pages/Search';
 import Verbs from './pages/Verbs';
 
 const menuOptions = [
@@ -42,6 +42,12 @@ const menuOptions = [
     href: '/adjectives/sentences',
     icon: Handshake,
   },
+  {
+    key: 'search',
+    label: 'Search',
+    href: '/search',
+    icon: Handshake,
+  },
 
   // {
   //   key: "phrases",
@@ -63,6 +69,7 @@ function App() {
         <Route path="/adjectives/sentences" element={<AdjConjSent />} />
         <Route path="/verbs" element={<Verbs />} />
         <Route path="/phrases" element={<Phrases />} />
+        <Route path="/search" element={<Search />} />
       </Routes>
     </>
   );

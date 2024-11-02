@@ -1,4 +1,5 @@
 const adjectiveComparativeAndSuperlativeList = [
+  { hu: 'kevés', de: 'wenig', de_co: 'weniger', de_su: 'am wenigsten' },
   { hu: 'öreg, régi', de: 'alt', de_co: 'älter', de_su: 'am ältesten' },
   {
     hu: 'vonzó',
@@ -170,6 +171,7 @@ const adjectiveComparativeAndSuperlativeList = [
   { hu: 'alsó', de: 'der untere', de_co: '--', de_su: 'der unterste' },
   { hu: 'elülső', de: 'der vordere', de_co: '--', de_su: 'der vorderste' },
   { hu: 'hátsó', de: 'der hintere', de_co: '--', de_su: 'der hinterste' },
+  { de: 'dezente', hu: 'diszkrét', de_co: 'dezenter', de_su: 'am dezentesten' },
 ];
 
 const colors = [

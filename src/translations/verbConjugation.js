@@ -1,24 +1,64 @@
 export const verbs = [
+  // stehen
+  // trinken
+  // wohnen
+  // heißen
+  // hören
+  // singen
+  // spielen
+  // holen 		hozni
+  // gehen
+  // finden
+  // antworten
+  // reden
+  // machen
+  // studieren
+  // arbeiten
+  // kommen
+  // reisen
+
   {
-    de: 'haben',
-    hu: 'van valamije',
-    ich: 'habe',
-    du: 'hast',
-    esersie: 'hat',
-    wir: 'haben',
-    ihr: 'habt',
-    siepl: 'haben',
+    de: 'reisen',
+    hu: 'utazni',
+    ich: 'reise',
+    du: 'reist',
+    esersie: 'reist',
+    wir: 'reisen',
+    ihr: 'reist',
+    siepl: 'reisen',
+  },
+
+  {
+    de: 'reden',
+    hu: 'dumálni',
+    ich: 'rede',
+    du: 'redest',
+    esersie: 'redet',
+    wir: 'reden',
+    ihr: 'redet',
+    siepl: 'reden',
   },
   {
-    de: 'sein',
-    hu: 'van [létezik]',
-    ich: 'bin',
-    du: 'bist',
-    esersie: 'ist',
-    wir: 'sind',
-    ihr: 'seid',
-    siepl: 'sind',
+    de: 'holen',
+    hu: 'hozni',
+    ich: 'hole',
+    du: 'holst',
+    esersie: 'holt',
+    wir: 'holen',
+    ihr: 'holt',
+    siepl: 'holen',
   },
+  {
+    de: 'gefallen',
+    hu: 'tetszik',
+    ich: 'gefalle',
+    du: 'gefällst',
+    esersie: 'gefällt',
+    wir: 'gefallen',
+    ihr: 'gefallt',
+    siepl: 'gefallen',
+  },
+
   {
     de: 'ab|nehmen',
     hu: 'felszáll, lefogy',
@@ -238,6 +278,90 @@ export const verbs = [
     wir: 'nehmen zu',
     ihr: 'nehmt zu',
     siepl: 'nehmen zu',
+  },
+];
+
+// segedigek: haben, sein, dürfen, können, mögen, müssen, sollen, wollen
+export const auxiliaryVerbs = [
+  {
+    de: 'haben',
+    hu: 'van valamije',
+    ich: 'habe',
+    du: 'hast',
+    esersie: 'hat',
+    wir: 'haben',
+    ihr: 'habt',
+    siepl: 'haben',
+  },
+  {
+    de: 'sein',
+    hu: 'van [létezik]',
+    ich: 'bin',
+    du: 'bist',
+    esersie: 'ist',
+    wir: 'sind',
+    ihr: 'seid',
+    siepl: 'sind',
+  },
+  {
+    de: 'dürfen',
+    hu: 'szabad',
+    ich: 'darf',
+    du: 'darfst',
+    esersie: 'darf',
+    wir: 'dürfen',
+    ihr: 'dürft',
+    siepl: 'dürfen',
+  },
+  {
+    de: 'können',
+    hu: 'tud',
+    ich: 'kann',
+    du: 'kannst',
+    esersie: 'kann',
+    wir: 'können',
+    ihr: 'könnt',
+    siepl: 'können',
+  },
+  {
+    de: 'mögen',
+    hu: 'szeret',
+    ich: 'mag',
+    du: 'magst',
+    esersie: 'mag',
+    wir: 'mögen',
+    ihr: 'mögt',
+    siepl: 'mögen',
+  },
+  {
+    de: 'müssen',
+    hu: 'kell',
+    ich: 'muss',
+    du: 'musst',
+    esersie: 'muss',
+    wir: 'müssen',
+    ihr: 'müsst',
+    siepl: 'müssen',
+  },
+  {
+    de: 'sollen',
+    hu: 'kellene',
+    ich: 'soll',
+    du: 'sollst',
+    esersie: 'soll',
+    wir: 'sollen',
+    ihr: 'sollt',
+    siepl: 'sollen',
+  },
+  {
+    de: 'wollen',
+    hu: 'akar',
+    ich: 'will',
+    du: 'willst',
+    esersie: 'will',
+    wir: 'wollen',
+    ihr: 'wollt',
+    siepl: 'wollen',
   },
 ];
 

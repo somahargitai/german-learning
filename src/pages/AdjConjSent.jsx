@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
-import { AppBar, Stack, Toolbar, Box, Typography, Button, Container } from '@mui/material';
+import { AppBar, Stack, Toolbar, Box, Typography, Button, Container, Modal } from '@mui/material';
 
 import adjectiveConjugationSentences from '../translations/adjectiveConjSent';
+import adjectiveComparativeAndSuperlativeList from '../translations/adjectiveCompSup';
 
 const AdjConjSent = () => {
   const [lastFailsIndexes, setLastFailsIndexes] = useState([]);
@@ -16,6 +17,7 @@ const AdjConjSent = () => {
     { solution: 'bla', visible: false },
     { solution: 'blabla', visible: false },
   ]);
+  const [explainModalOpen, setExplainModalOpen] = useState(false);
 
   function addLastFailsIndexes(index) {
     const newIndexes = [...lastFailsIndexes, index];
@@ -131,8 +133,23 @@ const AdjConjSent = () => {
         <Typography variant="h2">{actualSentence}</Typography>
       </Box>
 
-      {/* translation   */}
+      {/* Translation   */}
       <Typography variant="h4">{solutions[0].visible ? solutions[0].solution : '-'}</Typography>
+
+      {/* Explain */}
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '100%',
+        }}
+      >
+        <Button variant="contained" onClick={() => setExplainModalOpen(true)}>
+          Explain
+        </Button>
+        <ExplainModal open={explainModalOpen} setOpen={setExplainModalOpen} />
+      </Box>
 
       {/* Footer */}
       <Box
@@ -188,6 +205,33 @@ const AdjConjSent = () => {
         </Stack>
       </Box>
     </Container>
+  );
+};
+
+const ExplainModal = ({ open, setOpen }) => {
+  return (
+    <Modal open={open} onClose={() => setOpen(false)}>
+      <Container
+        sx={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: 400,
+          bgcolor: 'background.paper',
+          border: '2px solid #000',
+          boxShadow: 24,
+          p: 4,
+        }}
+      >
+        <Typography variant="h6" component="h2">
+          Explanation
+        </Typography>
+        <Typography variant="body2" sx={{ mt: 2 }}>
+          This is the explanation of the sentence.
+        </Typography>
+      </Container>
+    </Modal>
   );
 };
 
