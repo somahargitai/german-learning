@@ -44,7 +44,7 @@ function NavBar({ menuOptions }) {
             }}
           />
         </IconButton>
-        v1.1.8
+        v1.1.9
         <IconButton
           edge="end"
           color="inherit"

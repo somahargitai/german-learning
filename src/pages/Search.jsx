@@ -55,7 +55,7 @@ function Search() {
 
       <Grid container spacing={4}>
         {filteredWords.map((word, index) => (
-          <Grid item xs={12} sx={{ width: '100%' }}>
+          <Grid item="true" xs={12} key={index} sx={{ width: '100%' }}>
             <Paper sx={{ p: 4 }}>
               {/* Noun properties */}
               {word.de && (

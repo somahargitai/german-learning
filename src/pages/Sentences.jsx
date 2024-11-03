@@ -1,56 +1,53 @@
 import { useEffect, useState } from 'react';
-import { AppBar, Stack, Toolbar, Box, Typography, Button, Container, Modal } from '@mui/material';
+import {
+  AppBar,
+  Box,
+  Button,
+  Container,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  Stack,
+  Toolbar,
+  Typography,
+} from '@mui/material';
+import { introduceSentences, questions } from '../translations/drillSentences';
 
-import adjectiveConjugationSentences from '../translations/adjectiveConjSent';
-import adjectiveComparativeAndSuperlativeList from '../translations/adjectiveCompSup';
+const languages = ['de', 'hu'];
 
-const AdjConjSent = () => {
-  const [lastFailsIndexes, setLastFailsIndexes] = useState([]);
-  const [passedInLastTen, setPassedInLastTen] = useState(Array(10).fill(false));
-  const [successCounter, setSuccessCounter] = useState(0);
+function Sentences() {
   const [actualIndex, setActualIndex] = useState(0);
   const [actualSentence, setActualSentence] = useState('');
-  // const [actualLanguage, setActualLanguage] = useState("de");
-  const language = 'hu';
+  const [solution, setSolution] = useState({ solution: '', visible: false });
   const [showButtonDisabled, setShowButtonDisabled] = useState(false);
-  const [solutions, setSolutions] = useState([
-    { solution: 'bla', visible: false },
-    { solution: 'blabla', visible: false },
-  ]);
-  const [explainModalOpen, setExplainModalOpen] = useState(false);
+  const [successCounter, setSuccessCounter] = useState(0);
+  const [passedInLastTen, setPassedInLastTen] = useState(new Array(10).fill(false));
+  const [selectedList, setSelectedList] = useState(introduceSentences);
+  const [selectedListName, setSelectedListName] = useState('introduce');
+  const [lastFailsIndexes, setLastFailsIndexes] = useState([]);
 
-  function addLastFailsIndexes(index) {
-    const newIndexes = [...lastFailsIndexes, index];
-    setLastFailsIndexes(newIndexes);
+  function getRandomLanguage() {
+    const randomIndex = Math.floor(Math.random() * languages.length);
+    const chosenLanguage = languages[randomIndex];
+    return chosenLanguage;
   }
 
   function getNextWordIndex() {
     if (successCounter < 5 && lastFailsIndexes.length > 5) {
       const randomElementFromLastFails =
         lastFailsIndexes[Math.floor(Math.random() * lastFailsIndexes.length)];
-
       return randomElementFromLastFails;
     }
 
-    let randomIndex;
-    do {
-      randomIndex = Math.floor(Math.random() * adjectiveConjugationSentences.length);
-    } while (randomIndex === actualIndex);
-
-    return randomIndex;
-  }
-
-  const setSolutionsItemVisible = (index) => {
-    setSolutions(
-      solutions.map((solution, si) => (si === index ? { ...solution, visible: true } : solution))
-    );
-  };
-
-  function setNextPassed() {
-    if (solutions[0].visible === false) {
-      setSolutionsItemVisible(0);
-
-      setShowButtonDisabled(true);
+    if (selectedList.length > 1) {
+      let randomIndex;
+      do {
+        randomIndex = Math.floor(Math.random() * selectedList.length);
+      } while (randomIndex === actualIndex);
+      return randomIndex;
+    } else {
+      return 0;
     }
   }
 
@@ -59,23 +56,42 @@ const AdjConjSent = () => {
     setPassedInLastTen(newList);
   }
 
+  function addLastFailsIndexes(index) {
+    const newIndexes = [...lastFailsIndexes, index];
+    setLastFailsIndexes(newIndexes);
+  }
+
   function setNextWord() {
+    const language = getRandomLanguage();
     const nextWordIndex = getNextWordIndex();
-    const nextItem = adjectiveConjugationSentences[nextWordIndex];
+    const nextItem = selectedList[nextWordIndex];
     const nextWord = nextItem[language];
 
     setActualIndex(nextWordIndex);
     setActualSentence(nextWord);
 
     const translationSolution = language === 'de' ? nextItem.hu : nextItem.de;
-    const pronounSolution = nextItem.pronoun;
-    const solutionsRefill = [
-      { solution: translationSolution, visible: false },
-      { solution: pronounSolution, visible: false },
-    ];
 
-    setSolutions(solutionsRefill);
+    setSolution({ solution: translationSolution, visible: false });
     setShowButtonDisabled(false);
+  }
+
+  function setNextPassed() {
+    if (!solution.visible) {
+      setSolution({ ...solution, visible: true });
+      setShowButtonDisabled(true);
+    }
+  }
+
+  function handleWordListChange(event) {
+    if (event.target.value === 'introduce') {
+      setSelectedList(introduceSentences);
+      setSelectedListName('introduce');
+    } else if (event.target.value === 'questions') {
+      setSelectedList(questions);
+      setSelectedListName('questions');
+    }
+    setNextWord();
   }
 
   useEffect(() => {
@@ -86,6 +102,12 @@ const AdjConjSent = () => {
     setSuccessCounter(passedInLastTen.filter((passed) => passed).length);
   }, [passedInLastTen]);
 
+  useEffect(() => {
+    if (selectedList.length > 1) {
+      setNextWord();
+    }
+  }, [selectedList]);
+
   return (
     <Container
       sx={{
@@ -93,7 +115,6 @@ const AdjConjSent = () => {
         flexDirection: 'column',
         width: '100%',
         height: '100vh',
-        // 56+56+6+16
         paddingTop: '134px',
         marginTop: 0,
       }}
@@ -106,21 +127,21 @@ const AdjConjSent = () => {
             justifyContent: 'space-between',
           }}
         >
-          <Typography
-            variant="h4"
-            sx={{
-              fontWeight: 'bold',
-              textTransform: 'uppercase',
-            }}
-          >
-            Adjective Conjugation 
+          <Typography variant="h4" sx={{ fontWeight: 'bold', textTransform: 'uppercase' }}>
+            Sentences
           </Typography>
-
           <Typography variant="h4">{successCounter} / 10</Typography>
         </Toolbar>
       </AppBar>
 
-      {/* main content */}
+      <FormControl sx={{ mb: 4 }}>
+        <InputLabel>Sentence Type</InputLabel>
+        <Select value={selectedListName} onChange={handleWordListChange}>
+          <MenuItem value="introduce">Introduction Sentences</MenuItem>
+          <MenuItem value="questions">Questions</MenuItem>
+        </Select>
+      </FormControl>
+
       <Box
         id="word"
         sx={{
@@ -133,25 +154,8 @@ const AdjConjSent = () => {
         <Typography variant="h2">{actualSentence}</Typography>
       </Box>
 
-      {/* Translation   */}
-      <Typography variant="h4">{solutions[0].visible ? solutions[0].solution : '-'}</Typography>
+      <Typography variant="h4">{solution.visible ? solution.solution : '-'}</Typography>
 
-      {/* Explain */}
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: '100%',
-        }}
-      >
-        <Button variant="contained" onClick={() => setExplainModalOpen(true)}>
-          Explain
-        </Button>
-        <ExplainModal open={explainModalOpen} setOpen={setExplainModalOpen} />
-      </Box>
-
-      {/* Footer */}
       <Box
         sx={{
           position: 'fixed',
@@ -163,7 +167,6 @@ const AdjConjSent = () => {
           boxShadow: '0 -2px 10px rgba(0,0,0,0.1)',
         }}
       >
-        {/* Footer Markers */}
         <Stack direction="row" spacing={2} justifyContent="space-between" sx={{ mx: 2 }}>
           <Button
             disabled={!showButtonDisabled}
@@ -174,6 +177,7 @@ const AdjConjSent = () => {
             }}
             endIcon="❌"
             variant="contained"
+            color="error"
             sx={{ flexGrow: 1 }}
           >
             Failed
@@ -186,13 +190,13 @@ const AdjConjSent = () => {
             }}
             endIcon="✅"
             variant="contained"
+            color="success"
             sx={{ flexGrow: 1 }}
           >
             Passed
           </Button>
         </Stack>
 
-        {/* Footer Show */}
         <Stack direction="row" justifyContent="center" sx={{ mt: 2, mx: 2 }}>
           <Button
             disabled={showButtonDisabled}
@@ -206,33 +210,6 @@ const AdjConjSent = () => {
       </Box>
     </Container>
   );
-};
+}
 
-const ExplainModal = ({ open, setOpen }) => {
-  return (
-    <Modal open={open} onClose={() => setOpen(false)}>
-      <Container
-        sx={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: 400,
-          bgcolor: 'background.paper',
-          border: '2px solid #000',
-          boxShadow: 24,
-          p: 4,
-        }}
-      >
-        <Typography variant="h6" component="h2">
-          Explanation
-        </Typography>
-        <Typography variant="body2" sx={{ mt: 2 }}>
-          This is the explanation of the sentence.
-        </Typography>
-      </Container>
-    </Modal>
-  );
-};
-
-export default AdjConjSent;
+export default Sentences;

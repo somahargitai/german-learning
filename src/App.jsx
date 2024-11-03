@@ -10,6 +10,7 @@ import Nouns from './pages/Nouns';
 import Phrases from './pages/Phrases';
 import Search from './pages/Search';
 import Verbs from './pages/Verbs';
+import Sentences from './pages/Sentences';
 
 const menuOptions = [
   // {
@@ -38,8 +39,14 @@ const menuOptions = [
   },
   {
     key: 'adjectives/sentences',
-    label: 'Adjectives Sentences',
+    label: 'Adj. Sentences',
     href: '/adjectives/sentences',
+    icon: Handshake,
+  },
+  {
+    key: 'sentences',
+    label: 'Sentences',
+    href: '/sentences',
     icon: Handshake,
   },
   {
@@ -67,6 +74,7 @@ function App() {
         <Route path="/nouns" element={<Nouns />} />
         <Route path="/adjectives" element={<Adjectives />} />
         <Route path="/adjectives/sentences" element={<AdjConjSent />} />
+        <Route path="/sentences" element={<Sentences />} />
         <Route path="/verbs" element={<Verbs />} />
         <Route path="/phrases" element={<Phrases />} />
         <Route path="/search" element={<Search />} />
