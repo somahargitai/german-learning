@@ -1,10 +1,11 @@
 import { Route, Routes, Navigate } from 'react-router-dom';
-import { Handshake } from '@mui/icons-material';
+import { Handshake, School } from '@mui/icons-material';
 
 import './App.css';
 import Adjectives from './pages/Adjectives';
 import AdjConjSent from './pages/AdjConjSent';
 import Home from './pages/Home';
+import LessonTwo from './pages/LessonTwo';
 import NavBar from './components/NavBar';
 import Nouns from './pages/Nouns';
 import Phrases from './pages/Phrases';
@@ -50,6 +51,12 @@ const menuOptions = [
     icon: Handshake,
   },
   {
+    key: 'lesson-two',
+    label: 'Lesson Two',
+    href: '/lesson-two',
+    icon: School,
+  },
+  {
     key: 'search',
     label: 'Search',
     href: '/search',
@@ -77,6 +84,7 @@ function App() {
         <Route path="/sentences" element={<Sentences />} />
         <Route path="/verbs" element={<Verbs />} />
         <Route path="/phrases" element={<Phrases />} />
+        <Route path="/lesson-two" element={<LessonTwo />} />
         <Route path="/search" element={<Search />} />
       </Routes>
     </>

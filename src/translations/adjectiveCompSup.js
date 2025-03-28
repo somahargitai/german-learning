@@ -43,6 +43,13 @@ const adjectiveComparativeAndSuperlativeList = [
   },
   { hu: 'nagy', de: 'groß', de_co: 'größer', de_su: 'am größten' },
   { hu: 'jó', de: 'gut', de_co: 'besser', de_su: 'am besten' },
+  { 
+    hu: 'rossz',
+    de: 'schlecht',
+    de_co: 'schlechter',
+    de_su: 'am schlechtesten'
+  },
+
   { hu: 'szívesen', de: 'gern', de_co: 'lieber', de_su: 'am liebsten' },
   {
     hu: 'csúnya',
@@ -172,6 +179,8 @@ const adjectiveComparativeAndSuperlativeList = [
   { hu: 'elülső', de: 'der vordere', de_co: '--', de_su: 'der vorderste' },
   { hu: 'hátsó', de: 'der hintere', de_co: '--', de_su: 'der hinterste' },
   { de: 'dezente', hu: 'diszkrét', de_co: 'dezenter', de_su: 'am dezentesten' },
+
+
 ];
 
 const colors = [

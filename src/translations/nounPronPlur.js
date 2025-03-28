@@ -1,4 +1,25 @@
 export const otherNouns = [
+  { andras: 'die', de: 'Zeit', hu: 'idő', de_pl: 'Zeiten' },
+  { andras: 'der', de: 'Tag', hu: 'nap', de_pl: 'Tage' },
+  { andras: 'das', de: 'Jahr', hu: 'év', de_pl: 'Jahre' },
+  { andras: 'der', de: 'Weg', hu: 'út', de_pl: 'Wege' },
+  { andras: 'das', de: 'Haus', hu: 'ház', de_pl: 'Häuser' },
+  { andras: 'die', de: 'Hand', hu: 'kéz', de_pl: 'Hände' },
+  { andras: 'der', de: 'Mensch', hu: 'ember', de_pl: 'Menschen' },
+  { andras: 'das', de: 'Leben', hu: 'élet', de_pl: 'Leben' },
+  { andras: 'die', de: 'Welt', hu: 'világ', de_pl: 'Welten' },
+  { andras: 'das', de: 'Wort', hu: 'szó', de_pl: 'Wörter' },
+  { andras: 'die', de: 'Arbeit', hu: 'munka', de_pl: 'Arbeiten' },
+  { andras: 'der', de: 'Name', hu: 'név', de_pl: 'Namen' },
+  { andras: 'die', de: 'Stadt', hu: 'város', de_pl: 'Städte' },
+  { andras: 'das', de: 'Land', hu: 'ország', de_pl: 'Länder' },
+  { andras: 'die', de: 'Nacht', hu: 'éjszaka', de_pl: 'Nächte' },
+  { andras: 'der', de: 'Kopf', hu: 'fej', de_pl: 'Köpfe' },
+  { andras: 'das', de: 'Auge', hu: 'szem', de_pl: 'Augen' },
+  { andras: 'die', de: 'Tür', hu: 'ajtó', de_pl: 'Türen' },
+  { andras: 'der', de: 'Platz', hu: 'hely, tér', de_pl: 'Plätze' },
+  { andras: 'die', de: 'Frage', hu: 'kérdés', de_pl: 'Fragen' },
+
   { pronoun: 'das', de: 'Märchen', hu: 'mese', de_pl: 'Märchen' },
   { pronoun: 'die', de: 'Geschichte', hu: 'történet', de_pl: 'Geschichten' },
   { pronoun: 'das', de: 'Rotkäppchen', hu: 'Piroska', de_pl: 'Rotkäppchen' },
@@ -68,6 +89,7 @@ export const house = [
 
 export const clothes = [
   // öltözködés
+
   { hu: 'alsónemű', de: 'Strümpfe' },
   { pronoun: 'die', de: 'Mütze', hu: 'sapka', de_pl: 'Mützen' },
   { pronoun: 'das', de: 'Käppchen', hu: 'kis sapka', de_pl: 'Käppchen' },
@@ -117,6 +139,38 @@ export const food = [
   { pronoun: 'die', de: 'Torte', hu: 'torta', de_pl: 'Torten' },
 ];
 
+export const lecked28 = [
+  {
+    pronoun: 'das',
+    de: 'Dorf',
+    hu: 'falu',
+    de_pl: 'Dörfer',
+  },
+  {
+    pronoun: 'das',
+    de: 'Hafen',
+    hu: 'kikötő',
+    de_pl: 'Häfen',
+  },
+  {
+    pronoun: 'die',
+    de: 'Hauptstadt',
+    hu: 'főváros',
+    de_pl: 'Hauptstädte',
+  },
+  {
+    pronoun: 'der',
+    de: 'Ort',
+    hu: 'hely',
+    de_pl: 'Orte',
+  },
+  {
+    pronoun: 'die',
+    de: 'Stadt',
+    hu: 'város',
+    de_pl: 'Städte',
+  },
+];
 // export default {
 //   otherNouns,
 //   family,

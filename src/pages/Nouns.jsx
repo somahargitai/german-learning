@@ -20,6 +20,7 @@ import {
   clothes,
   bodyParts,
   food,
+  lecked28
 } from '../translations/nounPronPlur';
 
 function Nouns() {
@@ -124,6 +125,7 @@ function Nouns() {
         ...clothes,
         ...bodyParts,
         ...food,
+        ...lecked28
       ]);
     } else if (wordSet === 'otherNouns') {
       setNounPronounsAndPlurals(otherNouns);
@@ -139,6 +141,8 @@ function Nouns() {
       setNounPronounsAndPlurals(bodyParts);
     } else if (wordSet === 'food') {
       setNounPronounsAndPlurals(food);
+    } else if (wordSet === 'lecked28') {
+      setNounPronounsAndPlurals(lecked28);
     }
   }
 
@@ -366,6 +370,7 @@ function Nouns() {
                   ...clothes,
                   ...bodyParts,
                   ...food,
+                  ...lecked28
                 ]);
                 setFilterModalOpen(false);
               }}
@@ -375,6 +380,7 @@ function Nouns() {
             <ModalButton label="animals" handleChangeWordSet={handleChangeWordSet} />
             <ModalButton label="bodyParts" handleChangeWordSet={handleChangeWordSet} />
             <ModalButton label="food" handleChangeWordSet={handleChangeWordSet} />
+            <ModalButton label="lecked28" handleChangeWordSet={handleChangeWordSet} />
           </Stack>
         </Box>
       </Modal>
