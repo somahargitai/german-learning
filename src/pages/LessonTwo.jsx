@@ -8,7 +8,6 @@ import {
   Container,
   Divider,
   FormControl,
-  Grid,
   InputLabel,
   MenuItem,
   Paper,
@@ -241,8 +240,8 @@ function LessonTwo() {
         flexDirection: 'column',
         width: '100%',
         height: '100vh',
-        paddingTop: '134px',
-        marginTop: 0,
+        overflow: 'hidden',
+        position: 'relative',
       }}
     >
       <AppBar position="fixed" sx={{ marginTop: '60px' }}>
@@ -260,62 +259,79 @@ function LessonTwo() {
         </Toolbar>
       </AppBar>
 
-      <Paper elevation={3} sx={{ p: 3, mb: 3 }}>
-        <Grid container spacing={2}>
-          <Grid item xs={12} md={6}>
-            <FormControl fullWidth>
-              <InputLabel>Exercise Type</InputLabel>
-              <Select value={exerciseType} onChange={handleExerciseTypeChange}>
-                <MenuItem value="all">All Exercises</MenuItem>
-                <MenuItem value="vocabulary">Vocabulary</MenuItem>
-                <MenuItem value="sentences">Sentences</MenuItem>
-              </Select>
-            </FormControl>
-          </Grid>
-          
-          <Grid item xs={12} md={6}>
-            <FormControl fullWidth>
-              <InputLabel>Language Direction</InputLabel>
-              <Select value={language} onChange={handleLanguageChange}>
-                <MenuItem value="de-hu">German → Hungarian</MenuItem>
-                <MenuItem value="hu-de">Hungarian → German</MenuItem>
-              </Select>
-            </FormControl>
-          </Grid>
+      {/* Main content area - scrollable */}
+      <Box 
+        sx={{ 
+          flexGrow: 1, 
+          overflowY: 'auto',
+          paddingTop: '134px',
+          paddingBottom: '120px', // Space for the bottom buttons
+          width: '100%',
+        }}
+      >
+        <Paper elevation={3} sx={{ p: 3, mb: 3 }}>
+          <Box 
+            sx={{ 
+              display: 'flex', 
+              flexDirection: 'column', 
+              gap: 2
+            }}
+          >
+            <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 2 }}>
+              <Box sx={{ flex: 1 }}>
+                <FormControl fullWidth>
+                  <InputLabel>Exercise Type</InputLabel>
+                  <Select value={exerciseType} onChange={handleExerciseTypeChange}>
+                    <MenuItem value="all">All Exercises</MenuItem>
+                    <MenuItem value="vocabulary">Vocabulary</MenuItem>
+                    <MenuItem value="sentences">Sentences</MenuItem>
+                  </Select>
+                </FormControl>
+              </Box>
+              
+              <Box sx={{ flex: 1 }}>
+                <FormControl fullWidth>
+                  <InputLabel>Language Direction</InputLabel>
+                  <Select value={language} onChange={handleLanguageChange}>
+                    <MenuItem value="de-hu">German → Hungarian</MenuItem>
+                    <MenuItem value="hu-de">Hungarian → German</MenuItem>
+                  </Select>
+                </FormControl>
+              </Box>
+            </Box>
 
-          {exerciseType === 'vocabulary' && (
-            <Grid item xs={12}>
-              <FormControl fullWidth>
-                <InputLabel>Vocabulary Category</InputLabel>
-                <Select value={vocabularyCategory} onChange={handleVocabularyCategoryChange}>
-                  <MenuItem value="all">All Categories</MenuItem>
-                  <MenuItem value="family">Family Members</MenuItem>
-                  <MenuItem value="bodyParts">Body Parts</MenuItem>
-                  <MenuItem value="animals">Animals</MenuItem>
-                  <MenuItem value="descriptions">Descriptions</MenuItem>
-                  <MenuItem value="colors">Colors</MenuItem>
-                  <MenuItem value="countries">Countries</MenuItem>
-                </Select>
-              </FormControl>
-            </Grid>
-          )}
+            {exerciseType === 'vocabulary' && (
+              <Box sx={{ width: '100%' }}>
+                <FormControl fullWidth>
+                  <InputLabel>Vocabulary Category</InputLabel>
+                  <Select value={vocabularyCategory} onChange={handleVocabularyCategoryChange}>
+                    <MenuItem value="all">All Categories</MenuItem>
+                    <MenuItem value="family">Family Members</MenuItem>
+                    <MenuItem value="bodyParts">Body Parts</MenuItem>
+                    <MenuItem value="animals">Animals</MenuItem>
+                    <MenuItem value="descriptions">Descriptions</MenuItem>
+                    <MenuItem value="colors">Colors</MenuItem>
+                    <MenuItem value="countries">Countries</MenuItem>
+                  </Select>
+                </FormControl>
+              </Box>
+            )}
 
-          {exerciseType === 'sentences' && (
-            <Grid item xs={12}>
-              <FormControl fullWidth>
-                <InputLabel>Sentence Category</InputLabel>
-                <Select value={sentenceCategory} onChange={handleSentenceCategoryChange}>
-                  <MenuItem value="all">All Sentences</MenuItem>
-                  <MenuItem value="habenSein">Haben & Sein</MenuItem>
-                  <MenuItem value="countryTravel">Country Travel</MenuItem>
-                  <MenuItem value="animalDescription">Animal Descriptions</MenuItem>
-                  <MenuItem value="personDescription">Person Descriptions</MenuItem>
-                </Select>
-              </FormControl>
-            </Grid>
-          )}
-          
-          <Grid item xs={12}>
+            {exerciseType === 'sentences' && (
+              <Box sx={{ width: '100%' }}>
+                <FormControl fullWidth>
+                  <InputLabel>Sentence Category</InputLabel>
+                  <Select value={sentenceCategory} onChange={handleSentenceCategoryChange}>
+                    <MenuItem value="all">All Sentences</MenuItem>
+                    <MenuItem value="habenSein">Haben & Sein</MenuItem>
+                    <MenuItem value="countryTravel">Country Travel</MenuItem>
+                    <MenuItem value="animalDescription">Animal Descriptions</MenuItem>
+                    <MenuItem value="personDescription">Person Descriptions</MenuItem>
+                  </Select>
+                </FormControl>
+              </Box>
+            )}
+            
             <Box 
               sx={{ 
                 display: { 
@@ -354,72 +370,77 @@ function LessonTwo() {
                 Space: Show | F: Failed | P: Passed
               </Typography>
             )}
-          </Grid>
-        </Grid>
-      </Paper>
+          </Box>
+        </Paper>
 
-      <Card 
-        sx={{ 
-          mb: 4, 
-          p: { xs: 2, md: 4 }, 
-          minHeight: { xs: '200px', md: '300px' }, 
-          display: 'flex', 
-          alignItems: 'center', 
-          justifyContent: 'center',
-          width: '100%',
-        }}
-      >
-        <CardContent sx={{ width: '100%' }}>
-          {currentItem && (
-            <Box sx={{ width: '100%' }}>
-              <Typography 
-                variant="h3" 
-                align="center" 
-                gutterBottom
-                sx={{ 
-                  mb: 4,
-                  fontSize: {
-                    xs: '1.8rem',
-                    sm: '2.5rem',
-                    md: '3.5rem',
-                    lg: '4.5rem',
-                  },
-                  wordBreak: 'break-word',
-                  hyphens: 'auto',
-                  overflowWrap: 'break-word',
-                  padding: { xs: 1, md: 2 }
-                }}
-              >
-                {currentItem[language.split('-')[0]]}
-              </Typography>
-              
-              <Divider sx={{ my: 3 }} />
-              
-              <Typography 
-                variant="h4" 
-                align="center"
-                sx={{ 
-                  visibility: solution.visible ? 'visible' : 'hidden', 
-                  minHeight: '3rem',
-                  fontSize: {
-                    xs: '1.5rem',
-                    sm: '2rem',
-                    md: '2.8rem',
-                    lg: '3.5rem',
-                  },
-                  wordBreak: 'break-word',
-                  hyphens: 'auto',
-                  overflowWrap: 'break-word',
-                  padding: { xs: 1, md: 2 }
-                }}
-              >
-                {solution.solution}
-              </Typography>
-            </Box>
-          )}
-        </CardContent>
-      </Card>
+        <Card 
+          sx={{ 
+            mb: 4, 
+            p: { xs: 1, md: 2 }, 
+            minHeight: { xs: '200px', md: '300px' }, 
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'center',
+            width: '100%',
+            border: 'none',
+            boxShadow: 'none',
+            elevation: 0
+          }}
+        >
+          <CardContent sx={{ width: '100%', px: { xs: 1, md: 2 }, py: 2 }}>
+            {currentItem && (
+              <Box sx={{ width: '100%' }}>
+                <Typography 
+                  variant="h3" 
+                  align="center" 
+                  gutterBottom
+                  sx={{ 
+                    mb: 2,
+                    fontSize: {
+                      xs: '1.8rem',
+                      sm: '2.5rem',
+                      md: '3.5rem',
+                      lg: '4.5rem',
+                    },
+                    wordBreak: 'break-word',
+                    hyphens: 'auto',
+                    overflowWrap: 'break-word',
+                    padding: { xs: 0, md: 1 }
+                  }}
+                >
+                  {currentItem[language.split('-')[0]]}
+                </Typography>
+                
+                <Divider sx={{ my: 2 }} />
+                
+                <Typography 
+                  variant="h4" 
+                  align="center"
+                  sx={{ 
+                    visibility: solution.visible ? 'visible' : 'hidden', 
+                    minHeight: '3rem',
+                    fontSize: {
+                      xs: '1.5rem',
+                      sm: '2rem',
+                      md: '2.8rem',
+                      lg: '3.5rem',
+                    },
+                    wordBreak: 'break-word',
+                    hyphens: 'auto',
+                    overflowWrap: 'break-word',
+                    padding: { xs: 0, md: 1 },
+                    marginTop: 2
+                  }}
+                >
+                  {solution.solution}
+                </Typography>
+              </Box>
+            )}
+          </CardContent>
+        </Card>
+      </Box>
 
+      {/* Control Buttons - fixed at bottom */}
       <Box
         sx={{
           position: 'fixed',
@@ -429,6 +450,7 @@ function LessonTwo() {
           padding: 2,
           bgcolor: 'background.paper',
           boxShadow: '0 -2px 10px rgba(0,0,0,0.1)',
+          zIndex: 1100,
         }}
       >
         <Stack direction="row" spacing={2} justifyContent="space-between" sx={{ mx: 2 }}>
