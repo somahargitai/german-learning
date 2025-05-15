@@ -5,7 +5,7 @@ import { AppBar, IconButton, ListItemText, Toolbar } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import HamburgerMenuItems from './HamburgerMenuItems';
 import HamburgerItem from './HamburgerItem';
-import { LogoMark, LogoMarkFlex } from './LogoMark';
+import { LogoMarkFlex } from './LogoMark';
 
 function NavBar({ menuOptions }) {
   const [open, setOpen] = useState(false);
@@ -44,7 +44,7 @@ function NavBar({ menuOptions }) {
             }}
           />
         </IconButton>
-        v1.1.10
+        v1.1.11
         <IconButton
           edge="end"
           color="inherit"

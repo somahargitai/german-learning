@@ -6,6 +6,7 @@ import Adjectives from './pages/Adjectives';
 import AdjConjSent from './pages/AdjConjSent';
 import Home from './pages/Home';
 import LessonTwo from './pages/LessonTwo';
+import LessonThree from './pages/LessonThree';
 import NavBar from './components/NavBar';
 import Nouns from './pages/Nouns';
 import Phrases from './pages/Phrases';
@@ -57,6 +58,12 @@ const menuOptions = [
     icon: School,
   },
   {
+    key: 'lesson3',
+    label: 'Lesson Three',
+    href: '/lesson3',
+    icon: School,
+  },
+  {
     key: 'search',
     label: 'Search',
     href: '/search',
@@ -78,6 +85,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home menuOptions={menuOptions} />} />
         <Route path="*" element={<Navigate to="/" />} />
+        <Route path="/lesson3" element={<LessonThree />} />
         <Route path="/nouns" element={<Nouns />} />
         <Route path="/adjectives" element={<Adjectives />} />
         <Route path="/adjectives/sentences" element={<AdjConjSent />} />
