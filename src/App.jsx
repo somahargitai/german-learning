@@ -13,6 +13,7 @@ import Phrases from './pages/Phrases';
 import Search from './pages/Search';
 import Verbs from './pages/Verbs';
 import Sentences from './pages/Sentences';
+import LessonFour from './pages/LessonFour';
 
 const menuOptions = [
   // {
@@ -64,6 +65,12 @@ const menuOptions = [
     icon: School,
   },
   {
+    key: 'lesson4',
+    label: 'Lesson Four',
+    href: '/lesson-four',
+    icon: School,
+  },
+  {
     key: 'search',
     label: 'Search',
     href: '/search',
@@ -93,6 +100,7 @@ function App() {
         <Route path="/verbs" element={<Verbs />} />
         <Route path="/phrases" element={<Phrases />} />
         <Route path="/lesson-two" element={<LessonTwo />} />
+        <Route path="/lesson-four" element={<LessonFour />} />
         <Route path="/search" element={<Search />} />
       </Routes>
     </>
