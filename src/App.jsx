@@ -1,9 +1,10 @@
 import { Route, Routes, Navigate } from 'react-router-dom';
-import { Handshake, School } from '@mui/icons-material';
+import { Handshake, School, Api } from '@mui/icons-material';
 
 import './App.css';
 import Adjectives from './pages/Adjectives';
 import AdjConjSent from './pages/AdjConjSent';
+import ApiTest from './pages/ApiTest';
 import Home from './pages/Home';
 import LessonTwo from './pages/LessonTwo';
 import LessonThree from './pages/LessonThree';
@@ -76,6 +77,12 @@ const menuOptions = [
     href: '/search',
     icon: Handshake,
   },
+  {
+    key: 'api-test',
+    label: 'API Test',
+    href: '/api-test',
+    icon: Api,
+  },
 
   // {
   //   key: "phrases",
@@ -102,6 +109,7 @@ function App() {
         <Route path="/lesson-two" element={<LessonTwo />} />
         <Route path="/lesson-four" element={<LessonFour />} />
         <Route path="/search" element={<Search />} />
+        <Route path="/api-test" element={<ApiTest />} />
       </Routes>
     </>
   );
