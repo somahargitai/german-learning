@@ -129,7 +129,7 @@ function ApiTest() {
             color: 'text.secondary',
           }}
         >
-          API URL: {apiUrl}
+          API URL: {import.meta.env.VITE_API_URL}
         </Typography>
       </Paper>
     </Box>
