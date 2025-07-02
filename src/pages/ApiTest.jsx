@@ -1,12 +1,5 @@
 import { useState } from 'react';
-import { 
-  Box, 
-  Button, 
-  Typography, 
-  Paper, 
-  CircularProgress,
-  Alert
-} from '@mui/material';
+import { Box, Button, Typography, Paper, CircularProgress, Alert } from '@mui/material';
 import { Send } from '@mui/icons-material';
 
 function ApiTest() {
@@ -15,10 +8,10 @@ function ApiTest() {
   const [error, setError] = useState('');
 
   // Hardcoded prompt sentence
-  const hardcodedPrompt = "Hallo! Wie geht es dir heute?";
+  const hardcodedPrompt = 'Hallo! Wie geht es dir heute?';
 
-  // Get API URL from configuration
-  const apiUrl = import.meta.env.VITE_API_URL;
+  //   // Get API URL from configuration
+  //   const apiUrl = import.meta.env.VITE_API_URL;
 
   const handleSendPrompt = async () => {
     setLoading(true);
@@ -26,13 +19,13 @@ function ApiTest() {
     setResponse('');
 
     try {
-      const response = await fetch(`${apiUrl}/api/openai/freeTalk`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/openai/freeTalk`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          message: hardcodedPrompt
+          message: hardcodedPrompt,
         }),
       });
 
@@ -78,15 +71,15 @@ function ApiTest() {
         <Typography variant="h6" gutterBottom>
           Hardcoded Prompt:
         </Typography>
-        
-        <Typography 
-          variant="body1" 
-          sx={{ 
-            backgroundColor: '#f5f5f5', 
-            padding: 2, 
+
+        <Typography
+          variant="body1"
+          sx={{
+            backgroundColor: '#f5f5f5',
+            padding: 2,
             borderRadius: 1,
             marginBottom: 3,
-            fontStyle: 'italic'
+            fontStyle: 'italic',
           }}
         >
           "{hardcodedPrompt}"
@@ -120,22 +113,20 @@ function ApiTest() {
                 backgroundColor: '#e8f5e8',
                 textAlign: 'left',
                 whiteSpace: 'pre-wrap',
-                wordBreak: 'break-word'
+                wordBreak: 'break-word',
               }}
             >
-              <Typography variant="body1">
-                {response}
-              </Typography>
+              <Typography variant="body1">{response}</Typography>
             </Paper>
           </Box>
         )}
 
-        <Typography 
-          variant="caption" 
-          sx={{ 
-            display: 'block', 
-            marginTop: 2, 
-            color: 'text.secondary' 
+        <Typography
+          variant="caption"
+          sx={{
+            display: 'block',
+            marginTop: 2,
+            color: 'text.secondary',
           }}
         >
           API URL: {apiUrl}
@@ -145,4 +136,4 @@ function ApiTest() {
   );
 }
 
-export default ApiTest; 
+export default ApiTest;
