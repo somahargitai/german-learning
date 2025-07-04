@@ -6,6 +6,7 @@ import Adjectives from './pages/Adjectives';
 import AdjConjSent from './pages/AdjConjSent';
 import ApiTest from './pages/ApiTest';
 import Home from './pages/Home';
+import TestLesson34 from './pages/TestLesson34';
 import LessonTwo from './pages/LessonTwo';
 import LessonThree from './pages/LessonThree';
 import NavBar from './components/NavBar';
@@ -83,6 +84,12 @@ const menuOptions = [
     href: '/api-test',
     icon: Api,
   },
+  {
+    key: 'test-lesson-34',
+    label: 'Test Lesson 3-4',
+    href: '/test-lesson-34',
+    icon: School,
+  },
 
   // {
   //   key: "phrases",
@@ -110,6 +117,7 @@ function App() {
         <Route path="/lesson-four" element={<LessonFour />} />
         <Route path="/search" element={<Search />} />
         <Route path="/api-test" element={<ApiTest />} />
+        <Route path="/test-lesson-34" element={<TestLesson34 />} />
       </Routes>
     </>
   );
